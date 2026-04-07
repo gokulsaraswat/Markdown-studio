@@ -1,0 +1,19 @@
+PATCH 3 MANIFEST
+
+Included patch files:
+- js/app.js
+- styles/app.css
+- README.md
+- sample.md
+- PATCH_3_AGENT_GUIDE.md
+- PATCH_3_DIFF.txt
+- PATCH_3_MANIFEST.txt
+
+Purpose:
+- app.js: Patch 3 feature logic
+- app.css: Patch 3 styling and responsive polish
+- README.md: updated user-facing documentation
+- sample.md: patch validation sample
+- PATCH_3_AGENT_GUIDE.md: merge notes for automated agents
+- PATCH_3_DIFF.txt: high-level patch summary
+- PATCH_3_MANIFEST.txt: file inventory

@@ -1,0 +1,22 @@
+Patch 2 summary
+
+Updated files:
+- js/app.js
+- styles/app.css
+- README.md
+- sample.md
+- PATCH_2_AGENT_GUIDE.md
+- PATCH_2_DIFF.txt
+- PATCH_2_MANIFEST.txt
+
+Main additions:
+- export TXT / HTML / PDF / DOCX
+- copy markdown source
+- improved copy HTML behavior
+- insert image / GIF / file link
+- insert code block with language selector
+- insert table builder
+- insert callout builder
+- insert date/time dialog
+- preview callout rendering
+- composer modal styling

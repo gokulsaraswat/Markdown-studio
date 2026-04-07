@@ -1,0 +1,12 @@
+Markdown Studio Local — Patch 2 manifest
+
+Changed runtime files:
+- js/app.js
+- styles/app.css
+
+Updated project docs:
+- README.md
+- sample.md
+- PATCH_2_AGENT_GUIDE.md
+- PATCH_2_DIFF.txt
+- PATCH_2_MANIFEST.txt

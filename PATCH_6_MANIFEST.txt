@@ -1,0 +1,13 @@
+PATCH 6 MANIFEST
+================
+
+Files included in the patch bundle:
+- js/app.js
+- styles/app.css
+- README.md
+- CHANGELOG.md
+- FINAL_QA_CHECKLIST.md
+- sample.md
+- PATCH_6_AGENT_GUIDE.md
+- PATCH_6_DIFF.txt
+- PATCH_6_MANIFEST.txt

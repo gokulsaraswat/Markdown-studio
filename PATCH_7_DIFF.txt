@@ -1,0 +1,22 @@
+PATCH 7 DIFF SUMMARY
+
+Changed files:
+- js/app.js
+- styles/app.css
+- README.md
+- CHANGELOG.md
+- FINAL_QA_CHECKLIST.md
+- sample.md
+- PATCH_7_AGENT_GUIDE.md
+- PATCH_7_MANIFEST.txt
+
+Feature summary:
+- slash command menu inside the editor
+- contextual selection toolbar
+- typewriter mode
+- paragraph focus mode
+- spellcheck toggle
+- word goal tracking
+- clipboard image paste
+- image/GIF drag-drop embed
+- updated docs for agent handoff and QA

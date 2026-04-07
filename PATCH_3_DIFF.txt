@@ -1,0 +1,22 @@
+PATCH 3 HIGH-LEVEL DIFF
+
+1. js/app.js
+- added document insight helpers for headings, tables, links, tasks, images, and reading metrics
+- added command palette modal and action registry
+- added utility sidebar for outline / stats / recent local sessions
+- added focus mode, accent preset handling, autosave state labels, and session restore support
+- added sync meter state and richer status bar output
+- integrated new shortcuts for palette, outline, stats, recent, and focus mode
+
+2. styles/app.css
+- added accent preset variables and branded gradients
+- added command palette UI styling
+- added utility sidebar UI styling
+- added focus-mode pane emphasis styles
+- added preview sync meter styling
+- added smoother motion and responsive refinements
+
+3. docs + sample
+- updated README for Patch 3 features and shortcuts
+- updated sample markdown to exercise Patch 3 features
+- added patch guide / diff / manifest files for agent workflows

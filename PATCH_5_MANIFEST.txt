@@ -1,0 +1,14 @@
+Patch 5 manifest
+
+Changed existing files:
+- js/app.js
+- styles/app.css
+- README.md
+- sample.md
+
+New files:
+- CHANGELOG.md
+- FINAL_QA_CHECKLIST.md
+- PATCH_5_AGENT_GUIDE.md
+- PATCH_5_DIFF.txt
+- PATCH_5_MANIFEST.txt

@@ -1,0 +1,8 @@
+Patch 4 summary:
+- Added template gallery and reusable snippet insertion
+- Added local snapshot version history and diff compare tools
+- Added preview style studio with themes, custom CSS, print layout, and local render toggles
+- Added frontmatter-aware preview metadata bar
+- Added lightweight local math and mermaid-style flowchart rendering
+- Added optional auto disk sync for native file handles
+- Updated README and sample markdown for Patch 4 workflows

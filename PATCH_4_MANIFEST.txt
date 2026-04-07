@@ -1,0 +1,8 @@
+PATCH_4_MANIFEST
+js/app.js
+styles/app.css
+README.md
+sample.md
+PATCH_4_AGENT_GUIDE.md
+PATCH_4_DIFF.txt
+PATCH_4_MANIFEST.txt

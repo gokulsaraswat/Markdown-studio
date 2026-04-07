@@ -1,0 +1,25 @@
+PATCH 6 SUMMARY
+===============
+
+Purpose:
+- redesign the workspace UX so the editor gets more room and the interface feels less static
+
+Highlights:
+- compact document-first header
+- document popover replaces static status labels
+- grouped action menus for advanced controls
+- quick-format strip remains visible
+- divider tooltip with drag ratios and reset behavior
+- tighter pane headers and compact status bar
+- laptop-friendly split defaults
+
+Files changed:
+- js/app.js
+- styles/app.css
+- README.md
+- CHANGELOG.md
+- FINAL_QA_CHECKLIST.md
+- sample.md
+- PATCH_6_AGENT_GUIDE.md
+- PATCH_6_DIFF.txt
+- PATCH_6_MANIFEST.txt

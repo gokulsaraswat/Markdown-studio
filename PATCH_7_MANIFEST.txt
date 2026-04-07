@@ -1,0 +1,12 @@
+PATCH 7 MANIFEST
+
+Files in the patch bundle:
+- js/app.js
+- styles/app.css
+- README.md
+- CHANGELOG.md
+- FINAL_QA_CHECKLIST.md
+- sample.md
+- PATCH_7_AGENT_GUIDE.md
+- PATCH_7_DIFF.txt
+- PATCH_7_MANIFEST.txt

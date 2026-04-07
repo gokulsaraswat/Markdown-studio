@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown Studio Local</title>
+    <meta
+      name="description"
+      content="A polished, fully local markdown editor with live preview, synced scrolling, syntax highlighting, and disk save/open support."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+    <script>
+      (function () {
+        try {
+          var saved = JSON.parse(localStorage.getItem('markdown-studio-local:v1') || '{}');
+          var theme = saved.theme || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (error) {
+          console.warn('Unable to initialize saved theme.', error);
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="styles/tailwind.generated.css" />
+    <link rel="stylesheet" href="styles/app.css" />
+    <link id="hljs-theme" rel="stylesheet" href="styles/highlight-light.css" />
+  </head>
+  <body class="antialiased">
+    <div id="app"></div>
+
+    <script src="vendor/react.production.min.js"></script>
+    <script src="vendor/react-dom.production.min.js"></script>
+    <script src="vendor/marked.js"></script>
+    <script src="vendor/highlight.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

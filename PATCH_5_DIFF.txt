@@ -1,0 +1,24 @@
+Patch 5 final polish — summary of changes
+
+1. js/app.js
+- added final polish constants and helper functions
+- added settings modal, quick-start modal, release notes modal, and toast stack components
+- added editor font size, reduced motion, release notes state, and quick-start state
+- added settings, guide, and release note commands to the command palette
+- added Ctrl/Cmd + , keyboard shortcut for settings
+- refreshed the header, status bar, default markdown, and final render tree
+
+2. styles/app.css
+- added styles for the settings modal
+- added styles for the quick-start modal
+- added styles for the release notes modal
+- added stacked toast styles and extra tones
+- added reduced motion behavior and editor font size variable support
+- added responsive refinements for the new polish UI
+
+3. Documentation
+- updated README for the final build
+- refreshed sample markdown
+- added CHANGELOG.md
+- added FINAL_QA_CHECKLIST.md
+- added PATCH_5_AGENT_GUIDE.md
