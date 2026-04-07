@@ -1,0 +1,21 @@
+PATCH 8 DIFF SUMMARY
+====================
+
+Changed files:
+- js/app.js
+- styles/app.css
+- README.md
+- CHANGELOG.md
+- FINAL_QA_CHECKLIST.md
+- sample.md
+- PATCH_8_AGENT_GUIDE.md
+- PATCH_8_MANIFEST.txt
+
+Key app changes:
+- neutralized repeated patch branding in active UI surfaces
+- compacted header and top actions
+- reduced always-visible toolbar clutter
+- widened default editor-first split
+- aligned preview sync meter width with preview frame
+- improved scroll behavior for settings, release notes, and long surfaces
+- refreshed docs and QA guidance for Patch 8

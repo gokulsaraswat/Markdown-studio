@@ -1,0 +1,12 @@
+PATCH 8 MANIFEST
+================
+
+js/app.js
+styles/app.css
+README.md
+CHANGELOG.md
+FINAL_QA_CHECKLIST.md
+sample.md
+PATCH_8_AGENT_GUIDE.md
+PATCH_8_DIFF.txt
+PATCH_8_MANIFEST.txt
