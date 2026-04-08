@@ -1,0 +1,22 @@
+PATCH 9 MANIFEST
+================
+
+Changed files:
+- index.html
+- 404.html
+- .nojekyll
+- manifest.webmanifest
+- service-worker.js
+- assets/icon-192.png
+- assets/icon-512.png
+- assets/apple-touch-icon.png
+- js/app.js
+- styles/app.css
+- README.md
+- GITHUB_PAGES_DEPLOYMENT.md
+- CHANGELOG.md
+- FINAL_QA_CHECKLIST.md
+- sample.md
+- PATCH_9_AGENT_GUIDE.md
+- PATCH_9_DIFF.txt
+- PATCH_9_MANIFEST.txt
