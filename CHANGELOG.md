@@ -1,38 +1,47 @@
-# Markdown Studio Local — Changelog
+# Changelog
+
+## Patch 9 — Web deployment and browser reliability
+- added a web manifest and service worker for installable app behavior and offline shell caching
+- added GitHub Pages-ready static deployment files including `.nojekyll` and `404.html`
+- added adaptive file-action labels so the app switches between native open/save and upload/download fallback behavior
+- added browser-backed workspace backup using IndexedDB mirroring
+- added workspace backup export/import and restore actions
+- added an **App setup** modal for install, backup, storage, and runtime details
+- updated the welcome flow, release notes, README, deployment docs, QA checklist, and sample markdown
 
 ## Patch 8 — Workspace refinement
-- reduced noisy always-visible header chrome and removed repeated patch branding from the main UI
-- simplified the top action row so deeper features stay behind grouped menus instead of taking permanent space
-- widened the default split for more editor room on laptop screens
-- aligned the preview sync meter with the framed preview width
-- improved scrolling behavior for settings, release notes, workspace surfaces, and other longer overlays
-- refreshed the README, sample markdown, QA checklist, and agent docs for the hardening pass
+- reduced noisy static chrome in the main UI
+- removed repeated patch branding from active power-user surfaces
+- simplified the top header and top action row
+- widened the default split for better laptop writing space
+- aligned the preview sync meter with the preview frame width
+- made long settings and update surfaces scroll correctly on smaller screens
 
 ## Patch 7 — Smart writing
-- added slash commands directly inside the editor for headings, quick snippets, media, tables, callouts, and timestamps
-- added a contextual selection toolbar that appears only when text is selected
-- added typewriter mode, paragraph focus mode, spellcheck toggle, and word goal tracking
-- added clipboard image paste and image/GIF drag-drop embed inside the editor
-- upgraded the Insert and Tools panels for a writing-first flow
+- added slash commands
+- added contextual selection toolbar
+- added typewriter mode and paragraph focus mode
+- added spellcheck toggle and word-goal tracking
+- added clipboard image paste and smarter drag-drop media handling
 
-## Patch 6 — UX redesign
-- replaced static header status labels with a document popover opened from the file name
-- replaced wide static action rows with grouped menus for format, insert, export, view, tools, panels, and workspace actions
-- added divider hover help, live split ratios while dragging, and double-click reset
-- tightened the header, pane headers, and status bar to reclaim writing space on laptop screens
+## Patch 6 — UX cleanup and workspace structure
+- replaced noisy status labels with grouped menus and a document popover
+- improved divider help and split handling
+- tuned the interface for laptop-first use
 
 ## Patch 5 — Final polish
-- added unified settings, quick-start guide, release notes modal, and improved toast notifications
-- added reduced motion support and editor font size control
+- added a unified settings modal
+- added a welcome guide and release notes
+- improved notifications and settings controls
 
-## Patch 4 — Advanced power-user tools
-- template gallery, snapshots, diff viewer, style studio, print layout, frontmatter-aware preview, lightweight math, lightweight diagrams, and optional auto disk sync
+## Patch 4 — Power tools
+- added templates, snapshots, diff, style studio, print layout, and local preview enhancements
 
-## Patch 3 — Productivity layer
-- command palette, outline/stats/recents sidebar, focus mode, autosave status, session restore, and recent sessions
+## Patch 3 — Productivity
+- added command palette, outline, stats, recent sessions, and focus improvements
 
 ## Patch 2 — Export and insert
-- TXT, HTML, PDF, DOCX export and richer insert tools for images, GIFs, files, tables, callouts, code blocks, and timestamps
+- added exports and structured insert helpers
 
 ## Patch 1 — Editor power
-- zen mode, preview hide/show, autosave toggle, tab size control, undo/redo, find/replace, shortcuts help, current-line highlight, and jump-to-top/bottom
+- added zen mode, autosave toggle, find/replace, undo/redo, tab size, and shortcut improvements

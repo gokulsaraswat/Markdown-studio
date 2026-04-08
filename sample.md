@@ -1,52 +1,56 @@
----
-title: Workspace refinement sample
-author: Markdown Studio Local
-status: Draft
-tags: [writing, markdown, workspace]
----
+# Markdown Studio
 
-# Workspace refinement sample
+A local-first markdown workspace that can also be published as a **simple static web app**.
 
-This sample is meant to test the **cleaner laptop-first workspace**:
+## Patch 9 highlights
 
-- keep the editor on the left and the preview on the right
-- check that the preview sync meter aligns with the preview frame
-- use grouped menus instead of relying on permanent chrome
-- verify that settings, updates, and workspace surfaces scroll correctly
-- confirm slash commands and selection tools still work
+- adaptive **Open / Upload** behavior depending on browser support
+- adaptive **Save / Download** behavior depending on browser support
+- browser-backed **workspace backup** with export and import
+- installable shell through a **manifest** and **service worker**
+- GitHub Pages-ready file layout with no backend required
 
-## Try these interactions
+## Why this matters
 
-1. Drag the divider and watch the hover help.
-2. Double-click the divider to reset the editor-first split.
-3. Open **Workspace → Settings** and verify the modal scrolls.
-4. Open **Workspace → Updates** and verify the release notes scroll cleanly.
-5. Type `/table` or `/callout` inside the editor.
-6. Select text and try the contextual formatting toolbar.
+You can keep the same workflow:
 
-> [!TIP]
-> The best Patch 8 result is not “more buttons.” It is **more usable writing space** with the same power still available when needed.
+1. Write locally.
+2. Publish the app folder later.
+3. Let users open it online.
+4. Keep the editor fast and reliable even when native file APIs are unavailable.
 
-## Example table
+## App setup checklist
 
-| Surface | What to check |
-| :--- | :--- |
-| Header | Smaller, calmer, less noisy |
-| Toolbar | Grouped menus plus a few quick actions |
-| Preview | Meter aligns with the frame |
-| Modals | Scroll safely on smaller screens |
+- open **App setup** from the document menu or command palette
+- export a workspace backup before publishing
+- test the hosted build in your target browser
+- verify whether the browser shows **Open / Save** or **Upload / Download**
+- install the app when supported if you want a more desktop-like shell
 
-## Example code block
+## Example markdown
+
+### Task list
+- [x] Write in the left pane
+- [x] Preview on the right
+- [x] Export markdown or HTML
+- [x] Keep a browser backup
+- [ ] Decide whether to add online sync later
+
+### Table
+
+| Mode | Open action | Save action |
+| --- | --- | --- |
+| Localhost + supported browser | Open | Save |
+| Static host without native picker support | Upload | Download |
+| Installed web app | Open or Upload | Save or Download |
+
+### Code block
 
 ```js
-function calmerWorkspace() {
-  return 'More writing room, same power.';
+function deploymentMode(nativeOpen, nativeSave) {
+  if (nativeOpen && nativeSave) return 'native';
+  return 'upload-download-fallback';
 }
 ```
 
-## Example task list
-
-- [x] Keep the editor on the left
-- [x] Keep the preview on the right
-- [x] Reduce static labels in the main UI
-- [x] Improve laptop scrolling behavior
+> Keep the app static for now. Simplicity and reliability are the point of this release.

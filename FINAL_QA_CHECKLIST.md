@@ -1,32 +1,49 @@
-# Markdown Studio Local — Final QA Checklist
+# Final QA Checklist
 
-## Patch 8 workspace refinement
-- [ ] the editor is still on the left and the preview is still on the right in split mode
-- [ ] the header feels smaller and less noisy than the previous build
-- [ ] repeated patch labels are no longer pushed into the main power-user UI
-- [ ] the preview sync meter spans the same framed width as the preview area
-- [ ] settings, updates, and longer workspace surfaces scroll correctly on a 14-inch laptop-sized window
-- [ ] the default split gives the editor noticeably more room than before
-- [ ] dragging the divider shows help and double-click reset still works
+## Core layout
+- [ ] editor is on the left and preview is on the right
+- [ ] default split still feels comfortable on a 14-inch laptop
+- [ ] divider hover help appears
+- [ ] divider drag updates cleanly
+- [ ] divider double-click reset works
 
-## Writing and editing
-- [ ] typing `/` still opens the slash command menu
-- [ ] selecting text still shows the contextual selection toolbar
-- [ ] typewriter mode, paragraph focus mode, spellcheck toggle, and word goal tracking still work
-- [ ] find/replace, undo/redo, wrap toggle, and tab size controls still work
+## Header and workspace chrome
+- [ ] top bar remains compact
+- [ ] no noisy patch-brand text appears in active writing surfaces
+- [ ] document popover still opens and closes correctly
+- [ ] grouped menus still work
 
-## Core workspace
-- [ ] live preview updates while typing
-- [ ] synced scrolling still works both ways
-- [ ] the preview remains stable while scrolling larger notes
-- [ ] the interface remains usable at typical laptop sizes
+## File handling
+- [ ] Open/Upload label matches the browser capability
+- [ ] Save/Download label matches the browser capability
+- [ ] opening a markdown file still loads content correctly
+- [ ] saving or downloading still clears the dirty state
 
-## Files and exports
-- [ ] native open/save works when served on localhost
-- [ ] TXT, HTML, PDF, and DOCX exports still complete successfully
-- [ ] image/GIF insert and clipboard image paste still render in preview
+## App setup and backup
+- [ ] App setup modal opens and scrolls correctly on a small laptop screen
+- [ ] exporting a workspace backup downloads a JSON file
+- [ ] importing a workspace backup restores the workspace
+- [ ] restore browser backup works after a backup has been written
+- [ ] clear browser backup works
+- [ ] request persistent storage does not throw errors
 
-## Power features
-- [ ] command palette, outline, stats, recents, templates, versions, diff, and style studio all open correctly
-- [ ] welcome modal, settings, release notes, and notifications still work
-- [ ] the status bar stays compact and does not feel noisy during writing
+## Offline and install shell
+- [ ] `manifest.webmanifest` loads
+- [ ] `service-worker.js` loads
+- [ ] service worker registers on a local or hosted secure context
+- [ ] install button state behaves sensibly in the test browser
+
+## Existing feature regression checks
+- [ ] slash commands still work
+- [ ] selection toolbar still appears
+- [ ] exports still work
+- [ ] templates, versions, diff, and style studio still open
+- [ ] settings, release notes, and welcome modal still scroll
+- [ ] preview sync meter still matches preview width
+
+## GitHub Pages smoke test
+- [ ] app loads from the published Pages URL
+- [ ] refreshing the root URL still loads the app
+- [ ] browser upload/download fallback works if native file access is unavailable
+- [ ] command palette still opens on the hosted site
+- [ ] browser backup export/import still works on the hosted site

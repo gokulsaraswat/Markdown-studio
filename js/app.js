@@ -10679,6 +10679,1288 @@
     });
   };
 
+  /* ===== Patch 9: GitHub Pages readiness, browser backups, and installable web mode ===== */
+  var PATCH9_VERSION_LABEL = 'Web deployment and browser reliability';
+  var PATCH9_IDB_DB = 'markdown-studio-patch9';
+  var PATCH9_IDB_STORE = 'workspace';
+  var PATCH9_IDB_KEY = 'current-workspace';
+
+  PATCH5_RELEASE_SECTIONS = [{
+    title: 'Web deployment and browser reliability',
+    items: [
+      'The app now ships with a web manifest, service worker, GitHub Pages deployment docs, and adaptive browser behavior for open and save actions.',
+      'Open and save labels now switch between native file access and upload or download fallbacks depending on the browser and hosting environment.',
+      'Workspace backups can now be exported, imported, and mirrored into browser storage so the editor feels safer when used as a static web app.',
+      'The active UI avoids noisy patch branding while keeping app setup, install, backup, and deployment help available behind focused entry points.'
+    ]
+  }].concat(PATCH5_RELEASE_SECTIONS && PATCH5_RELEASE_SECTIONS.slice ? PATCH5_RELEASE_SECTIONS.slice() : (PATCH5_RELEASE_SECTIONS || []));
+
+  var patch9BaseComponentDidMount = MarkdownStudioApp.prototype.componentDidMount;
+  var patch9BaseComponentWillUnmount = MarkdownStudioApp.prototype.componentWillUnmount;
+  var patch9BasePersistLocalState = MarkdownStudioApp.prototype.persistLocalState;
+  var patch9BaseGetCommandItems = MarkdownStudioApp.prototype.getCommandItems;
+
+  function patch9CanOpenFile() {
+    return !!(window.isSecureContext && window.showOpenFilePicker);
+  }
+
+  function patch9CanSaveFile() {
+    return !!(window.isSecureContext && window.showSaveFilePicker);
+  }
+
+  function patch9IsGitHubPages() {
+    return /github\.io$/i.test(window.location.hostname || '');
+  }
+
+  function patch9IsLocalHost() {
+    var host = String(window.location.hostname || '').toLowerCase();
+    return host === 'localhost' || host === '127.0.0.1';
+  }
+
+  function patch9IsStandalone() {
+    return !!((window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone);
+  }
+
+  function patch9GetHostLabel() {
+    if (patch9IsGitHubPages()) {
+      return 'GitHub Pages';
+    }
+    if (patch9IsLocalHost()) {
+      return 'Localhost';
+    }
+    return window.isSecureContext ? 'Secure web app' : 'Browser tab';
+  }
+
+  function patch9FormatBytes(bytes) {
+    var value = Number(bytes);
+    var units = ['B', 'KB', 'MB', 'GB'];
+    var index = 0;
+    if (!isFinite(value) || value <= 0) {
+      return '--';
+    }
+    while (value >= 1024 && index < units.length - 1) {
+      value = value / 1024;
+      index += 1;
+    }
+    return (value >= 10 || index === 0 ? Math.round(value) : value.toFixed(1)) + ' ' + units[index];
+  }
+
+  function patch9FileAccessLabel() {
+    if (patch9CanOpenFile() && patch9CanSaveFile()) {
+      return 'Native open and save';
+    }
+    if (patch9CanOpenFile()) {
+      return 'Native open with download save';
+    }
+    return 'Upload and download';
+  }
+
+  function patch9BuildRuntimeInfo(app) {
+    var estimate = app && app.state ? app.state.storageEstimate : null;
+    var usage = estimate && typeof estimate.usage === 'number' ? patch9FormatBytes(estimate.usage) : '--';
+    var quota = estimate && typeof estimate.quota === 'number' ? patch9FormatBytes(estimate.quota) : '--';
+    return {
+      openLabel: patch9CanOpenFile() ? 'Open' : 'Upload',
+      saveLabel: patch9CanSaveFile() ? 'Save' : 'Download',
+      saveAsLabel: patch9CanSaveFile() ? 'Save As' : 'Download As',
+      fileAccessLabel: patch9FileAccessLabel(),
+      fileAccessTone: patch9CanSaveFile() ? 'success' : 'accent',
+      hostLabel: patch9GetHostLabel(),
+      installLabel: patch9IsStandalone() ? 'Installed' : (app && app.state && app.state.installPromptReady ? 'Install ready' : 'Install when supported'),
+      storageLabel: app && app.state && app.state.storagePersistent ? 'Persistent storage requested' : 'Best-effort browser storage',
+      backupLabel: app && app.state && app.state.workspaceBackupAvailable ? 'Browser backup ready' : 'Backup not written yet',
+      cacheLabel: app && app.state && app.state.serviceWorkerReady ? 'Offline cache ready' : 'Offline cache pending',
+      networkLabel: navigator.onLine === false ? 'Offline' : 'Online',
+      storageSummary: usage + ' used of ' + quota
+    };
+  }
+
+  function patch9OpenDatabase() {
+    return new Promise(function (resolve, reject) {
+      if (!window.indexedDB) {
+        resolve(null);
+        return;
+      }
+      var request = window.indexedDB.open(PATCH9_IDB_DB, 1);
+      request.onupgradeneeded = function (event) {
+        var db = event.target.result;
+        if (!db.objectStoreNames.contains(PATCH9_IDB_STORE)) {
+          db.createObjectStore(PATCH9_IDB_STORE);
+        }
+      };
+      request.onsuccess = function () {
+        resolve(request.result);
+      };
+      request.onerror = function () {
+        reject(request.error || new Error('Unable to open IndexedDB.'));
+      };
+    });
+  }
+
+  function patch9DbRead(key) {
+    return patch9OpenDatabase().then(function (db) {
+      if (!db) {
+        return null;
+      }
+      return new Promise(function (resolve) {
+        var tx = db.transaction(PATCH9_IDB_STORE, 'readonly');
+        var store = tx.objectStore(PATCH9_IDB_STORE);
+        var request = store.get(key);
+        request.onsuccess = function () {
+          resolve(request.result || null);
+        };
+        request.onerror = function () {
+          resolve(null);
+        };
+        tx.oncomplete = function () {
+          db.close();
+        };
+      });
+    }).catch(function () {
+      return null;
+    });
+  }
+
+  function patch9DbWrite(key, value) {
+    return patch9OpenDatabase().then(function (db) {
+      if (!db) {
+        return false;
+      }
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(PATCH9_IDB_STORE, 'readwrite');
+        tx.objectStore(PATCH9_IDB_STORE).put(value, key);
+        tx.oncomplete = function () {
+          db.close();
+          resolve(true);
+        };
+        tx.onerror = function () {
+          db.close();
+          reject(tx.error || new Error('Unable to write IndexedDB value.'));
+        };
+        tx.onabort = function () {
+          db.close();
+          reject(tx.error || new Error('IndexedDB transaction aborted.'));
+        };
+      });
+    });
+  }
+
+  function patch9DbDelete(key) {
+    return patch9OpenDatabase().then(function (db) {
+      if (!db) {
+        return false;
+      }
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(PATCH9_IDB_STORE, 'readwrite');
+        tx.objectStore(PATCH9_IDB_STORE)['delete'](key);
+        tx.oncomplete = function () {
+          db.close();
+          resolve(true);
+        };
+        tx.onerror = function () {
+          db.close();
+          reject(tx.error || new Error('Unable to delete IndexedDB value.'));
+        };
+      });
+    });
+  }
+
+  function patch9BuildWorkspaceState(app, includeMarkdown) {
+    return {
+      fileName: app.state.fileName || 'untitled.md',
+      markdown: includeMarkdown === false ? '' : (app.state.markdown || ''),
+      theme: app.state.theme,
+      themePreset: app.state.themePreset,
+      splitRatio: app.state.splitRatio,
+      lastSavedAt: app.state.lastSavedAt,
+      lastAutosavedAt: app.state.lastAutosavedAt,
+      wrapEnabled: app.state.wrapEnabled,
+      autosaveEnabled: app.state.autosaveEnabled,
+      showPreview: app.state.showPreview,
+      zenMode: app.state.zenMode,
+      focusMode: app.state.focusMode,
+      tabSize: app.state.tabSize,
+      utilitySidebarTab: app.state.utilitySidebarTab,
+      recentDocuments: normalizeRecentDocuments(app.state.recentDocuments),
+      previewTheme: app.state.previewTheme || 'studio',
+      customCss: app.state.customCss || '',
+      printLayout: !!app.state.printLayout,
+      diskSyncEnabled: !!app.state.diskSyncEnabled,
+      liteDiagramsEnabled: app.state.liteDiagramsEnabled !== false,
+      liteMathEnabled: app.state.liteMathEnabled !== false,
+      editorFontSize: app.state.editorFontSize || 15,
+      reduceMotion: !!app.state.reduceMotion,
+      typewriterMode: !!app.state.typewriterMode,
+      focusParagraphMode: !!app.state.focusParagraphMode,
+      spellcheckEnabled: app.state.spellcheckEnabled !== false,
+      wordGoal: patch7NormalizeWordGoal(app.state.wordGoal),
+      snapshots: patch4NormalizeSnapshots(app.state.snapshots),
+      versionLabel: PATCH9_VERSION_LABEL
+    };
+  }
+
+  function patch9CreateWorkspacePackage(app, source, includeMarkdown) {
+    return {
+      schema: 1,
+      app: 'Markdown Studio',
+      version: PATCH9_VERSION_LABEL,
+      source: source || 'browser-backup',
+      exportedAt: new Date().toISOString(),
+      state: patch9BuildWorkspaceState(app, includeMarkdown)
+    };
+  }
+
+  function patch9NormalizeWorkspacePackage(raw) {
+    if (!raw) {
+      return null;
+    }
+    if (raw.state) {
+      return raw;
+    }
+    if (typeof raw.markdown === 'string' || raw.fileName || raw.recentDocuments) {
+      return {
+        schema: 1,
+        app: 'Markdown Studio',
+        version: PATCH9_VERSION_LABEL,
+        source: 'legacy-import',
+        exportedAt: raw.exportedAt || new Date().toISOString(),
+        state: raw
+      };
+    }
+    return null;
+  }
+
+  function patch9PackageTimestamp(pkg) {
+    if (!pkg) {
+      return null;
+    }
+    var state = pkg.state || pkg;
+    return state.lastAutosavedAt || state.lastSavedAt || pkg.exportedAt || null;
+  }
+
+  function patch9RestoreWorkspacePackage(app, rawPackage, source) {
+    var pkg = patch9NormalizeWorkspacePackage(rawPackage);
+    var state = pkg && pkg.state ? pkg.state : null;
+    var markdown = '';
+    var insights = null;
+    var tabSize = 2;
+    var themePreset = THEME_PRESETS[0].value;
+
+    if (!state) {
+      throw new Error('Invalid workspace backup.');
+    }
+
+    markdown = typeof state.markdown === 'string' && state.markdown.length ? state.markdown : DEFAULT_MARKDOWN;
+    insights = computeDocumentInsights(markdown);
+    tabSize = Number(state.tabSize);
+    if (tabSize !== 2 && tabSize !== 4 && tabSize !== 8) {
+      tabSize = 2;
+    }
+    themePreset = normalizeThemePreset(state.themePreset);
+
+    app.fileHandle = null;
+    app.savedMarkdown = markdown;
+    app.pendingMarkdownPersist = !!state.autosaveEnabled;
+    app.resetHistory();
+
+    app.setState({
+      markdown: markdown,
+      renderedHtml: renderMarkdown(markdown),
+      stats: computeStats(markdown),
+      insights: insights,
+      outline: insights.outline,
+      fileName: state.fileName || 'restored.md',
+      theme: state.theme || app.state.theme,
+      themePreset: themePreset,
+      splitRatio: clamp(Number(state.splitRatio) || 62, 34, 72),
+      dirty: false,
+      lastSavedAt: state.lastSavedAt || null,
+      lastAutosavedAt: state.lastAutosavedAt || pkg.exportedAt || null,
+      autosaveStatus: state.autosaveEnabled === false ? 'disabled' : 'restored',
+      wrapEnabled: !!state.wrapEnabled,
+      autosaveEnabled: state.autosaveEnabled !== false,
+      showPreview: state.showPreview !== false,
+      zenMode: !!state.zenMode,
+      focusMode: !!state.focusMode,
+      tabSize: tabSize,
+      utilitySidebarTab: state.utilitySidebarTab || 'outline',
+      recentDocuments: normalizeRecentDocuments(state.recentDocuments),
+      previewTheme: state.previewTheme || 'studio',
+      customCss: typeof state.customCss === 'string' ? state.customCss : '',
+      printLayout: !!state.printLayout,
+      diskSyncEnabled: !!state.diskSyncEnabled,
+      liteDiagramsEnabled: state.liteDiagramsEnabled !== false,
+      liteMathEnabled: state.liteMathEnabled !== false,
+      editorFontSize: Number(state.editorFontSize) || 15,
+      reduceMotion: !!state.reduceMotion,
+      typewriterMode: !!state.typewriterMode,
+      focusParagraphMode: !!state.focusParagraphMode,
+      spellcheckEnabled: state.spellcheckEnabled !== false,
+      wordGoal: patch7NormalizeWordGoal(state.wordGoal),
+      snapshots: patch4NormalizeSnapshots(state.snapshots),
+      workspaceBackupAvailable: true,
+      lastIndexedBackupAt: patch9PackageTimestamp(pkg),
+      commandPaletteOpen: false,
+      toolbarMenu: null,
+      documentMenuOpen: false,
+      webModeOpen: false
+    }, function () {
+      patch4ApplyPreviewCss(this.state.customCss || '');
+      this.focusSelection(0, 0);
+      this.rememberCurrentDocument(source || 'backup');
+      this.showToast('Restored the browser workspace backup.', 'success');
+    }.bind(app));
+  }
+
+  function patch9BackupFileName(fileName) {
+    var base = String(fileName || 'markdown-studio').replace(/\.[^.]+$/, '');
+    return base + '-workspace.json';
+  }
+
+  function Patch9HiddenBackupInput(props) {
+    return e('input', {
+      ref: props.fileInputRef,
+      type: 'file',
+      accept: '.json,application/json',
+      className: 'hidden',
+      onChange: props.onChange
+    });
+  }
+
+  function Patch9InfoRow(props) {
+    return e('div', { className: 'patch9-info-row' }, [
+      e('div', { key: 'copy', className: 'patch9-info-row__copy' }, [
+        e('h4', { key: 'title', className: 'patch9-info-row__title' }, props.title),
+        e('p', { key: 'description', className: 'patch9-info-row__description' }, props.description)
+      ]),
+      e('div', { key: 'value', className: 'patch9-info-row__value' }, [
+        props.tone ? e(StatusChip, { key: 'chip', tone: props.tone }, props.value) : e('strong', { key: 'text' }, props.value),
+        props.meta ? e('span', { key: 'meta', className: 'patch9-info-row__meta' }, props.meta) : null
+      ])
+    ]);
+  }
+
+  function Patch9WebModal(props) {
+    if (!props.open) {
+      return null;
+    }
+
+    return e('div', {
+      className: 'modal-backdrop',
+      onClick: function (event) {
+        if (event.target === event.currentTarget) {
+          props.onClose();
+        }
+      }
+    }, e('div', { className: 'modal-card modal-card--settings modal-card--patch9-web' }, [
+      e('div', { key: 'header', className: 'modal-card__header' }, [
+        e('div', { key: 'copy' }, [
+          e('h3', { key: 'title', className: 'modal-card__title' }, 'App setup'),
+          e('p', { key: 'subtitle', className: 'modal-card__subtitle' }, 'Use the same editor locally or on GitHub Pages. Native file access appears when the browser supports it, while upload and download fallbacks stay available everywhere.')
+        ]),
+        e(ActionButton, {
+          key: 'close',
+          onClick: props.onClose,
+          label: 'Close',
+          compact: true,
+          icon: 'X',
+          title: 'Close app setup'
+        })
+      ]),
+      e('div', { key: 'hero', className: 'settings-hero patch9-hero' }, [
+        e(StatusChip, { key: 'host', tone: 'accent' }, props.runtime.hostLabel),
+        e(StatusChip, { key: 'access', tone: props.runtime.fileAccessTone }, props.runtime.fileAccessLabel),
+        e(StatusChip, { key: 'cache', tone: props.serviceWorkerReady ? 'success' : 'warning' }, props.runtime.cacheLabel),
+        e(StatusChip, { key: 'backup', tone: props.workspaceBackupAvailable ? 'success' : 'warning' }, props.runtime.backupLabel)
+      ]),
+      e('div', { key: 'body', className: 'modal-card__body modal-card__body--settings custom-scroll patch9-web-body' }, [
+        e('section', { key: 'runtime', className: 'settings-section patch9-web-section' }, [
+          e('h4', { key: 'title', className: 'settings-section__title' }, 'Runtime'),
+          e(Patch9InfoRow, {
+            key: 'fileAccess',
+            title: 'File handling',
+            description: 'Open and save actions automatically adapt to the current browser. On GitHub Pages, unsupported browsers fall back to upload and download without breaking the editor.',
+            value: props.runtime.fileAccessLabel,
+            tone: props.runtime.fileAccessTone
+          }),
+          e(Patch9InfoRow, {
+            key: 'network',
+            title: 'Connectivity',
+            description: 'The app can cache its shell for offline reuse. This helps the interface load again after the first online visit.',
+            value: props.runtime.networkLabel,
+            tone: props.online ? 'success' : 'warning',
+            meta: props.serviceWorkerReady ? 'Offline cache active' : 'Service worker still pending'
+          }),
+          e(Patch9InfoRow, {
+            key: 'storage',
+            title: 'Browser storage',
+            description: 'Settings stay in browser storage. The backup layer also mirrors workspace data into IndexedDB so static hosting feels safer.',
+            value: props.runtime.storageLabel,
+            tone: props.storagePersistent ? 'success' : 'accent',
+            meta: props.runtime.storageSummary
+          })
+        ]),
+        e('section', { key: 'backup', className: 'settings-section patch9-web-section' }, [
+          e('h4', { key: 'title', className: 'settings-section__title' }, 'Backup and restore'),
+          e(Patch9InfoRow, {
+            key: 'browserBackup',
+            title: 'Indexed browser backup',
+            description: 'Autosave can mirror the current workspace into IndexedDB. You can also export a JSON backup and import it later on another device or browser.',
+            value: props.workspaceBackupAvailable ? 'Backup ready' : 'No backup yet',
+            tone: props.workspaceBackupAvailable ? 'success' : 'warning',
+            meta: props.lastIndexedBackupAt ? ('Last backup ' + formatDateTime(props.lastIndexedBackupAt)) : 'Write or export a backup to start'
+          }),
+          e('div', { key: 'backupActions', className: 'settings-actions patch9-actions' }, [
+            e(ActionButton, { key: 'restore', onClick: props.onRestoreBackup, label: 'Restore browser backup', compact: true, icon: '↺', disabled: !props.workspaceBackupAvailable }),
+            e(ActionButton, { key: 'export', onClick: props.onExportBackup, label: 'Export backup', compact: true, primary: true, icon: '⇩' }),
+            e(ActionButton, { key: 'import', onClick: props.onImportBackup, label: 'Import backup', compact: true, icon: '⇪' }),
+            e(ActionButton, { key: 'clear', onClick: props.onClearBackup, label: 'Clear browser backup', compact: true, icon: '🗑', disabled: !props.workspaceBackupAvailable })
+          ])
+        ]),
+        e('section', { key: 'install', className: 'settings-section patch9-web-section' }, [
+          e('h4', { key: 'title', className: 'settings-section__title' }, 'Install and deploy'),
+          e(Patch9InfoRow, {
+            key: 'installRow',
+            title: 'Installable app shell',
+            description: 'When the browser exposes an install prompt, you can install the editor like a lightweight desktop app. On GitHub Pages the same static bundle can keep working as a browser-first app.',
+            value: props.runtime.installLabel,
+            tone: props.installPromptReady || props.installed ? 'accent' : 'warning',
+            meta: props.installed ? 'Already running in installed mode' : 'Some browsers keep this as a normal tab'
+          }),
+          e('div', { key: 'installActions', className: 'settings-actions patch9-actions' }, [
+            e(ActionButton, { key: 'install', onClick: props.onInstall, label: props.installed ? 'Installed' : 'Install app', compact: true, primary: !props.installed, icon: '⬇', disabled: props.installed || !props.installSupported }),
+            e(ActionButton, { key: 'persist', onClick: props.onRequestPersistentStorage, label: 'Request persistent storage', compact: true, icon: '◎', disabled: !props.canRequestStorage })
+          ]),
+          e('div', { key: 'deployment', className: 'patch9-note' }, 'Tip: deploy the whole folder as a static site. On browsers without native file system access, the app will automatically use upload and download actions instead of breaking save and open.')
+        ])
+      ]),
+      e('div', { key: 'footer', className: 'modal-card__footer' }, [
+        e(StatusChip, { key: 'hint', tone: 'accent' }, 'Use command palette for backup, install, and restore actions too'),
+        e('div', { key: 'actions', className: 'settings-actions' }, [
+          e(ActionButton, { key: 'done', onClick: props.onClose, label: 'Done', compact: true, primary: true, icon: '✓' })
+        ])
+      ])
+    ]));
+  }
+
+  function Patch9WelcomeModal(props) {
+    if (!props.open) {
+      return null;
+    }
+
+    var quickShortcuts = [
+      ['Ctrl/Cmd + P', 'Command palette'],
+      ['Type /', 'Slash commands'],
+      ['Ctrl/Cmd + O', 'Open or upload'],
+      ['Ctrl/Cmd + S', 'Save or download'],
+      ['Ctrl/Cmd + ,', 'Settings'],
+      ['F1', 'Shortcut sheet']
+    ];
+
+    return e('div', {
+      className: 'modal-backdrop',
+      onClick: function (event) {
+        if (event.target === event.currentTarget) {
+          props.onClose();
+        }
+      }
+    }, e('div', { className: 'modal-card modal-card--welcome modal-card--patch9' }, [
+      e('div', { key: 'header', className: 'modal-card__header modal-card__header--welcome' }, [
+        e('div', { key: 'copy' }, [
+          e('div', { key: 'eyebrow', className: 'welcome-eyebrow' }, 'Welcome'),
+          e('h3', { key: 'title', className: 'modal-card__title welcome-title' }, 'Markdown Studio'),
+          e('p', { key: 'subtitle', className: 'modal-card__subtitle welcome-subtitle' }, 'Write locally, deploy as a static web app later, and keep the workflow the same. The editor still favors the left pane, the preview still stays on the right, and deeper actions stay behind focused menus.')
+        ]),
+        e(ActionButton, {
+          key: 'close',
+          onClick: props.onClose,
+          label: 'Close',
+          compact: true,
+          icon: 'X',
+          title: 'Close welcome'
+        })
+      ]),
+      e('div', { key: 'body', className: 'modal-card__body modal-card__body--welcome custom-scroll' }, [
+        e('section', { key: 'start', className: 'welcome-grid' }, [
+          e('div', { key: 'panel', className: 'welcome-panel' }, [
+            e('h4', { key: 'title', className: 'welcome-panel__title' }, 'Start in three steps'),
+            e('ol', { key: 'steps', className: 'welcome-list' }, [
+              e('li', { key: '1' }, 'Write in the left editor while the preview stays in sync on the right.'),
+              e('li', { key: '2' }, 'Use grouped menus, slash commands, or the command palette instead of hunting for permanent buttons.'),
+              e('li', { key: '3' }, 'Open App setup when you want install, backup, or GitHub Pages behavior details.')
+            ])
+          ]),
+          e('div', { key: 'shortcuts', className: 'welcome-panel' }, [
+            e('h4', { key: 'title', className: 'welcome-panel__title' }, 'Quick access'),
+            e('div', { key: 'items', className: 'welcome-shortcuts-list' }, quickShortcuts.map(function (item) {
+              return e('div', { key: item[0], className: 'shortcut-item' }, [
+                e('kbd', { key: 'key', className: 'shortcut-item__key' }, item[0]),
+                e('span', { key: 'label', className: 'welcome-shortcut__label' }, item[1])
+              ]);
+            }))
+          ])
+        ]),
+        e('section', { key: 'features', className: 'welcome-feature-grid' }, [
+          e('article', { key: 'web', className: 'welcome-feature-card' }, [
+            e('h4', { key: 'title', className: 'welcome-feature-card__title' }, 'Web-ready'),
+            e('p', { key: 'copy', className: 'welcome-feature-card__copy' }, 'The static bundle can be published on GitHub Pages while keeping upload, download, preview, and export behavior reliable.')
+          ]),
+          e('article', { key: 'backup', className: 'welcome-feature-card' }, [
+            e('h4', { key: 'title', className: 'welcome-feature-card__title' }, 'Safer drafts'),
+            e('p', { key: 'copy', className: 'welcome-feature-card__copy' }, 'Browser backups can mirror your workspace into IndexedDB and export to JSON for easy handoff or recovery.')
+          ]),
+          e('article', { key: 'offline', className: 'welcome-feature-card' }, [
+            e('h4', { key: 'title', className: 'welcome-feature-card__title' }, 'Installable shell'),
+            e('p', { key: 'copy', className: 'welcome-feature-card__copy' }, 'With a manifest and service worker in place, supported browsers can install the app and keep the shell available offline.')
+          ])
+        ])
+      ]),
+      e('div', { key: 'footer', className: 'modal-card__footer modal-card__footer--welcome' }, [
+        e('div', { key: 'left', className: 'settings-actions' }, [
+          e(ActionButton, { key: 'setup', onClick: props.onAppSetup, label: 'App setup', compact: true, icon: '⬡' }),
+          e(ActionButton, { key: 'templates', onClick: props.onTemplates, label: 'Templates', compact: true, icon: '◇' }),
+          e(ActionButton, { key: 'shortcuts', onClick: props.onShortcuts, label: 'Shortcuts', compact: true, icon: '⌨' }),
+          e(ActionButton, { key: 'settings', onClick: props.onSettings, label: 'Settings', compact: true, icon: '⚙' })
+        ]),
+        e(ActionButton, { key: 'start', onClick: props.onClose, label: 'Start writing', compact: true, primary: true, icon: '→' })
+      ])
+    ]));
+  }
+
+  function Patch9ReleaseNotesModal(props) {
+    if (!props.open) {
+      return null;
+    }
+
+    return e('div', {
+      className: 'modal-backdrop',
+      onClick: function (event) {
+        if (event.target === event.currentTarget) {
+          props.onClose();
+        }
+      }
+    }, e('div', { className: 'modal-card modal-card--release modal-card--patch8 modal-card--patch9' }, [
+      e('div', { key: 'header', className: 'modal-card__header' }, [
+        e('div', { key: 'copy' }, [
+          e('h3', { key: 'title', className: 'modal-card__title' }, 'Workspace updates'),
+          e('p', { key: 'subtitle', className: 'modal-card__subtitle' }, 'This build keeps the workspace laptop-friendly while adding static web deployment support, installable app behavior, and safer browser-backed recovery for GitHub Pages and other static hosts.')
+        ]),
+        e(ActionButton, {
+          key: 'close',
+          onClick: props.onClose,
+          label: 'Close',
+          compact: true,
+          icon: 'X',
+          title: 'Close updates'
+        })
+      ]),
+      e('div', { key: 'hero', className: 'settings-hero' }, [
+        e(StatusChip, { key: 'web', tone: 'accent' }, 'Static-host ready'),
+        e(StatusChip, { key: 'offline', tone: 'success' }, 'Offline shell'),
+        e(StatusChip, { key: 'agent' }, 'Agent-ready docs')
+      ]),
+      e('div', { key: 'body', className: 'modal-card__body modal-card__body--release custom-scroll' },
+        PATCH5_RELEASE_SECTIONS.map(function (section) {
+          return e('section', { key: section.title, className: 'release-section' }, [
+            e('h4', { key: 'title', className: 'release-section__title' }, section.title),
+            e('ul', { key: 'items', className: 'release-section__list' }, (section.items || []).map(function (item, index) {
+              return e('li', { key: section.title + index, className: 'release-section__item' }, item);
+            }))
+          ]);
+        })
+      ),
+      e('div', { key: 'footer', className: 'modal-card__footer' }, [
+        e(StatusChip, { key: 'hint', tone: 'accent' }, 'Copy the summary if your agent needs the merged change history'),
+        e('div', { key: 'actions', className: 'settings-actions' }, [
+          e(ActionButton, { key: 'copy', onClick: props.onCopy, label: 'Copy summary', compact: true, icon: '⧉' }),
+          e(ActionButton, { key: 'done', onClick: props.onClose, label: 'Done', compact: true, primary: true, icon: '✓' })
+        ])
+      ])
+    ]));
+  }
+
+  MarkdownStudioApp.prototype.openWebModeModal = function () {
+    this.closeTransientMenus();
+    this.setState({ webModeOpen: true });
+  };
+
+  MarkdownStudioApp.prototype.closeWebModeModal = function () {
+    this.setState({ webModeOpen: false });
+  };
+
+  MarkdownStudioApp.prototype.refreshWebRuntime = function () {
+    var self = this;
+    var persistedPromise = navigator.storage && navigator.storage.persisted
+      ? navigator.storage.persisted().catch(function () { return false; })
+      : Promise.resolve(false);
+    var estimatePromise = navigator.storage && navigator.storage.estimate
+      ? navigator.storage.estimate().catch(function () { return null; })
+      : Promise.resolve(null);
+
+    Promise.all([persistedPromise, estimatePromise]).then(function (values) {
+      self.setState({
+        isFsApiAvailable: patch9CanOpenFile() && patch9CanSaveFile(),
+        storagePersistent: !!values[0],
+        storageEstimate: values[1],
+        online: navigator.onLine !== false,
+        installed: patch9IsStandalone()
+      });
+    });
+  };
+
+  MarkdownStudioApp.prototype.registerPatch9ServiceWorker = function () {
+    var self = this;
+    if (!('serviceWorker' in navigator) || !window.isSecureContext) {
+      this.setState({ serviceWorkerReady: false });
+      return;
+    }
+    navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+      self._patch9ServiceWorkerRegistration = registration;
+      self.setState({ serviceWorkerReady: true });
+      if (registration && registration.waiting) {
+        self.showToast('An offline update is ready after reload.', 'success');
+      }
+      registration.addEventListener('updatefound', function () {
+        var worker = registration.installing;
+        if (!worker) {
+          return;
+        }
+        worker.addEventListener('statechange', function () {
+          if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+            self.showToast('A cached update is ready after reload.', 'success');
+          }
+        });
+      });
+    }).catch(function (error) {
+      console.warn('Service worker registration failed.', error);
+      self.setState({ serviceWorkerReady: false });
+    });
+  };
+
+  MarkdownStudioApp.prototype.persistWorkspaceBackupSoon = function () {
+    var self = this;
+    if (this.patch9BackupTimeout) {
+      window.clearTimeout(this.patch9BackupTimeout);
+      this.patch9BackupTimeout = null;
+    }
+    if (this.state.autosaveEnabled === false) {
+      return;
+    }
+    this.patch9BackupTimeout = window.setTimeout(function () {
+      var pkg = patch9CreateWorkspacePackage(self, 'autosave', true);
+      self.patch9BackupTimeout = null;
+      patch9DbWrite(PATCH9_IDB_KEY, pkg).then(function () {
+        self.setState({
+          workspaceBackupAvailable: true,
+          lastIndexedBackupAt: pkg.exportedAt
+        });
+      }).catch(function (error) {
+        console.warn('Unable to mirror workspace backup.', error);
+      });
+    }, 720);
+  };
+
+  MarkdownStudioApp.prototype.restoreBrowserBackup = function () {
+    var self = this;
+    patch9DbRead(PATCH9_IDB_KEY).then(function (pkg) {
+      if (!pkg) {
+        self.showToast('No browser backup has been written yet.', 'error');
+        return;
+      }
+      patch9RestoreWorkspacePackage(self, pkg, 'browser-backup');
+    }).catch(function (error) {
+      console.error(error);
+      self.showToast('Unable to restore the browser backup.', 'error');
+    });
+  };
+
+  MarkdownStudioApp.prototype.exportWorkspaceBackup = function () {
+    var pkg = patch9CreateWorkspacePackage(this, 'manual-export', true);
+    var fileName = patch9BackupFileName(this.state.fileName || 'markdown-studio');
+    try {
+      this.downloadFallback(fileName, JSON.stringify(pkg, null, 2), 'application/json;charset=utf-8');
+      this.setState({
+        workspaceBackupAvailable: true,
+        lastIndexedBackupAt: pkg.exportedAt
+      });
+      patch9DbWrite(PATCH9_IDB_KEY, pkg).catch(function () {
+        return null;
+      });
+      this.showToast('Exported a workspace backup.', 'success');
+    } catch (error) {
+      console.error(error);
+      this.showToast('Unable to export the workspace backup.', 'error');
+    }
+  };
+
+  MarkdownStudioApp.prototype.importWorkspaceBackup = function () {
+    if (this.workspaceImportInputRef) {
+      this.workspaceImportInputRef.click();
+    }
+  };
+
+  MarkdownStudioApp.prototype.handleWorkspaceImportInput = function (event) {
+    var self = this;
+    var file = event.target.files && event.target.files[0];
+    event.target.value = '';
+    if (!file) {
+      return;
+    }
+
+    file.text().then(function (text) {
+      var parsed = JSON.parse(text);
+      patch9RestoreWorkspacePackage(self, parsed, 'imported-backup');
+      return patch9DbWrite(PATCH9_IDB_KEY, patch9NormalizeWorkspacePackage(parsed));
+    }).catch(function (error) {
+      console.error(error);
+      self.showToast('Unable to import that workspace backup.', 'error');
+    });
+  };
+
+  MarkdownStudioApp.prototype.clearBrowserBackup = function () {
+    var self = this;
+    if (!this.state.workspaceBackupAvailable) {
+      this.showToast('There is no browser backup to clear.', 'error');
+      return;
+    }
+    if (!window.confirm('Clear the stored browser backup for this app?')) {
+      return;
+    }
+    patch9DbDelete(PATCH9_IDB_KEY).then(function () {
+      self.setState({ workspaceBackupAvailable: false, lastIndexedBackupAt: null });
+      self.showToast('Cleared the browser backup.', 'success');
+    }).catch(function (error) {
+      console.error(error);
+      self.showToast('Unable to clear the browser backup.', 'error');
+    });
+  };
+
+  MarkdownStudioApp.prototype.requestPersistentStorage = function () {
+    var self = this;
+    if (!(navigator.storage && navigator.storage.persist)) {
+      this.showToast('Persistent storage is not supported in this browser.', 'error');
+      return;
+    }
+    navigator.storage.persist().then(function (granted) {
+      self.setState({ storagePersistent: !!granted });
+      self.showToast(granted ? 'Persistent storage requested for this browser.' : 'Persistent storage was not granted here.', granted ? 'success' : 'error');
+    }).catch(function (error) {
+      console.error(error);
+      self.showToast('Unable to request persistent storage.', 'error');
+    });
+  };
+
+  MarkdownStudioApp.prototype.installWebApp = function () {
+    var self = this;
+    if (patch9IsStandalone()) {
+      this.showToast('The app is already installed in standalone mode.', 'success');
+      return;
+    }
+    if (!this.deferredInstallPrompt) {
+      this.showToast('Install is not available in this browser yet.', 'error');
+      return;
+    }
+    this.deferredInstallPrompt.prompt();
+    Promise.resolve(this.deferredInstallPrompt.userChoice).then(function (choice) {
+      if (choice && choice.outcome === 'accepted') {
+        self.showToast('Install started in the browser.', 'success');
+      }
+      self.deferredInstallPrompt = null;
+      self.setState({ installPromptReady: false });
+    }).catch(function () {
+      self.deferredInstallPrompt = null;
+      self.setState({ installPromptReady: false });
+    });
+  };
+
+  MarkdownStudioApp.prototype.componentDidMount = function () {
+    var self = this;
+    patch9BaseComponentDidMount.call(this);
+    if (this._patch9Bootstrapped) {
+      return;
+    }
+    this._patch9Bootstrapped = true;
+
+    this.setState({
+      webModeOpen: false,
+      workspaceBackupAvailable: false,
+      lastIndexedBackupAt: null,
+      serviceWorkerReady: false,
+      installPromptReady: false,
+      storagePersistent: false,
+      storageEstimate: null,
+      online: navigator.onLine !== false,
+      installed: patch9IsStandalone()
+    });
+
+    this._patch9OnlineHandler = function () {
+      self.setState({ online: true });
+      self.showToast('Back online.', 'success');
+      self.refreshWebRuntime();
+    };
+    this._patch9OfflineHandler = function () {
+      self.setState({ online: false });
+      self.showToast('You are offline. Cached app features remain available.', 'error');
+      self.refreshWebRuntime();
+    };
+    this._patch9BeforeInstallHandler = function (event) {
+      event.preventDefault();
+      self.deferredInstallPrompt = event;
+      self.setState({ installPromptReady: true });
+    };
+    this._patch9InstalledHandler = function () {
+      self.deferredInstallPrompt = null;
+      self.setState({ installPromptReady: false, installed: true });
+      self.showToast('Markdown Studio installed.', 'success');
+    };
+
+    window.addEventListener('online', this._patch9OnlineHandler);
+    window.addEventListener('offline', this._patch9OfflineHandler);
+    window.addEventListener('beforeinstallprompt', this._patch9BeforeInstallHandler);
+    window.addEventListener('appinstalled', this._patch9InstalledHandler);
+
+    this.refreshWebRuntime();
+    this.registerPatch9ServiceWorker();
+
+    patch9DbRead(PATCH9_IDB_KEY).then(function (pkg) {
+      var pkgStamp = patch9PackageTimestamp(pkg);
+      var currentStamp = self.state.lastAutosavedAt || self.state.lastSavedAt || null;
+      var currentMarkdown = self.state.markdown || '';
+      var pkgState = pkg && pkg.state ? pkg.state : null;
+      var pkgMarkdown = pkgState && typeof pkgState.markdown === 'string' ? pkgState.markdown : '';
+      var shouldAutoRestore = !!pkg && !!pkgMarkdown && (!currentStamp || currentMarkdown === DEFAULT_MARKDOWN);
+
+      self.setState({
+        workspaceBackupAvailable: !!pkg,
+        lastIndexedBackupAt: pkgStamp || null
+      });
+
+      if (shouldAutoRestore && pkgMarkdown !== currentMarkdown) {
+        patch9RestoreWorkspacePackage(self, pkg, 'browser-backup');
+      }
+    }).catch(function () {
+      return null;
+    });
+  };
+
+  MarkdownStudioApp.prototype.componentWillUnmount = function () {
+    patch9BaseComponentWillUnmount.call(this);
+    if (this.patch9BackupTimeout) {
+      window.clearTimeout(this.patch9BackupTimeout);
+      this.patch9BackupTimeout = null;
+    }
+    window.removeEventListener('online', this._patch9OnlineHandler);
+    window.removeEventListener('offline', this._patch9OfflineHandler);
+    window.removeEventListener('beforeinstallprompt', this._patch9BeforeInstallHandler);
+    window.removeEventListener('appinstalled', this._patch9InstalledHandler);
+  };
+
+  MarkdownStudioApp.prototype.persistLocalState = function () {
+    patch9BasePersistLocalState.call(this);
+    this.persistWorkspaceBackupSoon();
+  };
+
+  MarkdownStudioApp.prototype.getCommandItems = function () {
+    var self = this;
+    return patch9BaseGetCommandItems.call(this).concat([
+      { id: 'appSetup', group: 'Workspace', title: 'Open app setup', subtitle: 'Install, backup, and web deployment actions', keywords: 'web setup install backup pages pwa', run: function () { self.openWebModeModal(); } },
+      { id: 'exportWorkspaceBackup', group: 'Workspace', title: 'Export workspace backup', subtitle: 'Download a JSON backup of the current browser workspace', keywords: 'backup export json workspace', run: function () { self.exportWorkspaceBackup(); } },
+      { id: 'importWorkspaceBackup', group: 'Workspace', title: 'Import workspace backup', subtitle: 'Restore a JSON backup export', keywords: 'backup import restore json workspace', run: function () { self.importWorkspaceBackup(); } },
+      { id: 'restoreBrowserBackup', group: 'Workspace', title: 'Restore browser backup', subtitle: 'Reload the latest IndexedDB workspace copy', keywords: 'browser backup indexeddb restore', run: function () { self.restoreBrowserBackup(); } },
+      { id: 'requestPersistentStorage', group: 'Workspace', title: 'Request persistent storage', subtitle: 'Ask the browser to reduce storage eviction risk', keywords: 'persistent storage offline cache', run: function () { self.requestPersistentStorage(); } },
+      { id: 'installApp', group: 'Workspace', title: 'Install app', subtitle: 'Install the editor when the browser exposes the prompt', keywords: 'install pwa standalone web app', run: function () { self.installWebApp(); } }
+    ]);
+  };
+
+  MarkdownStudioApp.prototype.handleOpenFile = function () {
+    var self = this;
+    if (!this.confirmDiscardIfNeeded()) {
+      return;
+    }
+
+    if (patch9CanOpenFile()) {
+      window.showOpenFilePicker({
+        multiple: false,
+        types: [
+          {
+            description: 'Markdown files',
+            accept: {
+              'text/markdown': ['.md', '.markdown'],
+              'text/plain': ['.txt']
+            }
+          }
+        ]
+      }).then(function (handles) {
+        if (!handles || !handles.length) {
+          return null;
+        }
+        return handles[0].getFile().then(function (file) {
+          return self.readFileObject(file, handles[0]);
+        });
+      }).catch(function (error) {
+        if (error && error.name === 'AbortError') {
+          return;
+        }
+        console.error(error);
+        self.showToast('Unable to open file.', 'error');
+      });
+      return;
+    }
+
+    if (this.fileInputRef) {
+      this.fileInputRef.click();
+    }
+  };
+
+  MarkdownStudioApp.prototype.saveToDisk = function (forcePicker) {
+    var self = this;
+    if (patch9CanSaveFile()) {
+      var handlePromise = this.fileHandle && !forcePicker
+        ? Promise.resolve(this.fileHandle)
+        : window.showSaveFilePicker({
+            suggestedName: this.state.fileName || 'document.md',
+            types: [
+              {
+                description: 'Markdown files',
+                accept: {
+                  'text/markdown': ['.md', '.markdown'],
+                  'text/plain': ['.txt']
+                }
+              }
+            ]
+          });
+
+      handlePromise.then(function (handle) {
+        if (!handle) {
+          return null;
+        }
+        self.fileHandle = handle;
+        return handle.createWritable().then(function (writable) {
+          return writable.write(self.state.markdown).then(function () {
+            return writable.close().then(function () {
+              self.afterSuccessfulSave(handle.name || self.state.fileName);
+            });
+          });
+        });
+      }).catch(function (error) {
+        if (error && error.name === 'AbortError') {
+          return;
+        }
+        console.error(error);
+        self.showToast('Unable to save file.', 'error');
+      });
+      return;
+    }
+
+    try {
+      var fileName = this.state.fileName || 'document.md';
+      var stamp = new Date().toISOString();
+      this.downloadFallback(fileName, this.state.markdown, 'text/markdown;charset=utf-8');
+      this.savedMarkdown = this.state.markdown;
+      this.setState({
+        fileName: fileName,
+        dirty: false,
+        lastSavedAt: stamp
+      }, function () {
+        self.rememberCurrentDocument('downloaded');
+        self.showToast('Downloaded the markdown file.', 'success');
+      });
+    } catch (error) {
+      console.error(error);
+      this.showToast('Unable to download file.', 'error');
+    }
+  };
+
+  MarkdownStudioApp.prototype.renderDocumentPopover = function () {
+    var self = this;
+    var runtime = patch9BuildRuntimeInfo(this);
+    return e('div', { className: 'topbar-doc-popover topbar-doc-popover--patch8 topbar-doc-popover--patch9 custom-scroll' }, [
+      e('div', { key: 'hero', className: 'topbar-doc-popover__hero' }, [
+        e(StatusChip, { key: 'disk', tone: this.state.dirty ? 'warning' : 'success' }, patch6DiskLabel(this.state)),
+        e(StatusChip, { key: 'autosave', tone: this.state.autosaveEnabled && this.state.autosaveStatus !== 'error' ? 'accent' : 'warning' }, patch6AutosaveLabel(this.state)),
+        e(StatusChip, { key: 'access', tone: runtime.fileAccessTone }, runtime.fileAccessLabel)
+      ]),
+      e('div', { key: 'summary', className: 'patch8-doc-summary patch9-doc-summary' }, [
+        e('div', { key: 'access', className: 'patch8-doc-summary__item' }, [
+          e('span', { key: 'label', className: 'patch8-doc-summary__label' }, 'Host'),
+          e('strong', { key: 'value', className: 'patch8-doc-summary__value' }, runtime.hostLabel)
+        ]),
+        e('div', { key: 'saved', className: 'patch8-doc-summary__item' }, [
+          e('span', { key: 'label', className: 'patch8-doc-summary__label' }, 'Last save'),
+          e('strong', { key: 'value', className: 'patch8-doc-summary__value' }, this.state.lastSavedAt ? formatDateTime(this.state.lastSavedAt) : 'Not saved yet')
+        ]),
+        e('div', { key: 'backup', className: 'patch8-doc-summary__item' }, [
+          e('span', { key: 'label', className: 'patch8-doc-summary__label' }, 'Browser backup'),
+          e('strong', { key: 'value', className: 'patch8-doc-summary__value' }, this.state.workspaceBackupAvailable ? (this.state.lastIndexedBackupAt ? formatDateTime(this.state.lastIndexedBackupAt) : 'Ready') : 'Not written yet')
+        ]),
+        e('div', { key: 'storage', className: 'patch8-doc-summary__item' }, [
+          e('span', { key: 'label', className: 'patch8-doc-summary__label' }, 'Storage'),
+          e('strong', { key: 'value', className: 'patch8-doc-summary__value' }, runtime.storageSummary)
+        ])
+      ]),
+      e('div', { key: 'actions', className: 'topbar-doc-popover__actions patch9-doc-actions' }, [
+        e(ActionButton, {
+          key: 'new',
+          onClick: function () { self.closeTransientMenus(); self.handleNewDocument(); },
+          label: 'New',
+          compact: true,
+          icon: '+'
+        }),
+        e(ActionButton, {
+          key: 'open',
+          onClick: function () { self.closeTransientMenus(); self.handleOpenFile(); },
+          label: runtime.openLabel,
+          compact: true,
+          icon: '↥'
+        }),
+        e(ActionButton, {
+          key: 'saveAs',
+          onClick: function () { self.closeTransientMenus(); self.handleSaveAsFile(); },
+          label: runtime.saveAsLabel,
+          compact: true,
+          icon: '⇪'
+        }),
+        e(ActionButton, {
+          key: 'backup',
+          onClick: function () { self.closeTransientMenus(); self.exportWorkspaceBackup(); },
+          label: 'Backup',
+          compact: true,
+          icon: '⧉'
+        }),
+        e(ActionButton, {
+          key: 'setup',
+          onClick: function () { self.closeTransientMenus(); self.openWebModeModal(); },
+          label: 'App setup',
+          compact: true,
+          icon: '⬡'
+        })
+      ])
+    ]);
+  };
+
+  MarkdownStudioApp.prototype.renderHeader = function () {
+    var self = this;
+    var isSplit = this.isPreviewVisible() && !this.state.zenMode;
+    var isEditorOnly = !this.isPreviewVisible() && !this.state.zenMode;
+    var runtime = patch9BuildRuntimeInfo(this);
+    var subtitle = this.state.dirty
+      ? 'Unsaved edits'
+      : (this.state.workspaceBackupAvailable ? 'Browser backup ready' : runtime.fileAccessLabel);
+
+    return e('header', { className: 'app-topbar app-topbar--patch6 app-topbar--patch8 app-topbar--patch9' }, [
+      e('div', { key: 'left', className: 'topbar-left topbar-left--patch8' }, [
+        e('div', { key: 'docWrap', className: 'topbar-doc-wrap' }, [
+          e('button', {
+            key: 'doc',
+            type: 'button',
+            onClick: this.toggleDocumentMenu.bind(this),
+            className: cx('topbar-doc-anchor topbar-doc-anchor--patch8', this.state.documentMenuOpen ? 'is-active' : ''),
+            title: 'Open document details, browser mode, and quick file actions'
+          }, [
+            e('span', { key: 'logo', className: 'brand-logo brand-logo--mini', 'aria-hidden': 'true' }, 'M'),
+            e('span', { key: 'indicator', className: cx('save-indicator', this.state.dirty ? 'is-dirty' : 'is-clean') }),
+            e('div', { key: 'copy', className: 'topbar-doc-copy' }, [
+              e('strong', { key: 'title', className: 'topbar-doc-title' }, this.state.fileName || 'untitled.md'),
+              e('span', { key: 'subtitle', className: 'topbar-doc-state topbar-doc-state--muted' }, subtitle)
+            ]),
+            e('span', { key: 'chevron', className: 'topbar-doc-chevron', 'aria-hidden': 'true' }, this.state.documentMenuOpen ? '▴' : '▾')
+          ]),
+          this.state.documentMenuOpen ? this.renderDocumentPopover() : null
+        ])
+      ]),
+      e('div', { key: 'center', className: 'topbar-center topbar-center--patch8' },
+        e('div', { className: 'view-segment', role: 'tablist', 'aria-label': 'Workspace view mode' }, [
+          e(Patch6SegmentButton, {
+            key: 'split',
+            label: 'Split',
+            active: isSplit,
+            onClick: function () { self.setWorkspaceView('split'); },
+            title: 'Show editor and preview side by side'
+          }),
+          e(Patch6SegmentButton, {
+            key: 'editor',
+            label: 'Editor',
+            active: isEditorOnly,
+            onClick: function () { self.setWorkspaceView('editor'); },
+            title: 'Hide the preview and keep only the editor visible'
+          }),
+          e(Patch6SegmentButton, {
+            key: 'zen',
+            label: 'Zen',
+            active: this.state.zenMode,
+            onClick: function () { self.setWorkspaceView('zen'); },
+            title: 'Stretch the editor and reduce chrome'
+          })
+        ])
+      ),
+      e('div', { key: 'actions', className: 'topbar-actions topbar-actions--compact topbar-actions--patch8' }, [
+        e(ActionButton, { key: 'open', onClick: this.handleOpenFile, label: runtime.openLabel, compact: true, icon: '↥', title: runtime.openLabel + ' a markdown file (Ctrl/Cmd + O)' }),
+        e(ActionButton, { key: 'save', onClick: this.handleSaveFile, label: runtime.saveLabel, compact: true, primary: true, icon: '💾', title: runtime.saveLabel + ' the current document (Ctrl/Cmd + S)' }),
+        e(ActionButton, { key: 'palette', onClick: this.openCommandPalette, label: 'Palette', compact: true, icon: '⌘', title: 'Open command palette (Ctrl/Cmd + P)' }),
+        e(ActionButton, { key: 'theme', onClick: this.handleThemeToggle, label: this.state.theme === 'dark' ? 'Light' : 'Dark', compact: true, icon: this.state.theme === 'dark' ? '☀' : '☾', title: 'Toggle light and dark themes' })
+      ])
+    ]);
+  };
+
+  MarkdownStudioApp.prototype.renderWelcomeModal = function () {
+    return e(Patch9WelcomeModal, {
+      open: !!this.state.welcomeOpen,
+      onClose: this.closeWelcomeModal.bind(this),
+      onTemplates: function () {
+        this.closeWelcomeModal();
+        this.openTemplatesModal();
+      }.bind(this),
+      onShortcuts: function () {
+        this.closeWelcomeModal();
+        this.openShortcuts();
+      }.bind(this),
+      onSettings: function () {
+        this.closeWelcomeModal();
+        this.openSettings();
+      }.bind(this),
+      onAppSetup: function () {
+        this.closeWelcomeModal();
+        this.openWebModeModal();
+      }.bind(this)
+    });
+  };
+
+  MarkdownStudioApp.prototype.renderReleaseNotesModal = function () {
+    return e(Patch9ReleaseNotesModal, {
+      open: !!this.state.releaseNotesOpen,
+      onClose: this.closeReleaseNotesModal.bind(this),
+      onCopy: this.copyReleaseNotesSummary.bind(this)
+    });
+  };
+
+  MarkdownStudioApp.prototype.renderWebModeModal = function () {
+    return e(Patch9WebModal, {
+      open: !!this.state.webModeOpen,
+      onClose: this.closeWebModeModal.bind(this),
+      runtime: patch9BuildRuntimeInfo(this),
+      workspaceBackupAvailable: !!this.state.workspaceBackupAvailable,
+      lastIndexedBackupAt: this.state.lastIndexedBackupAt,
+      serviceWorkerReady: !!this.state.serviceWorkerReady,
+      storagePersistent: !!this.state.storagePersistent,
+      installPromptReady: !!this.state.installPromptReady,
+      installSupported: !!this.state.installPromptReady,
+      installed: !!this.state.installed,
+      canRequestStorage: !!(navigator.storage && navigator.storage.persist),
+      online: navigator.onLine !== false,
+      onRestoreBackup: this.restoreBrowserBackup.bind(this),
+      onExportBackup: this.exportWorkspaceBackup.bind(this),
+      onImportBackup: this.importWorkspaceBackup.bind(this),
+      onClearBackup: this.clearBrowserBackup.bind(this),
+      onInstall: this.installWebApp.bind(this),
+      onRequestPersistentStorage: this.requestPersistentStorage.bind(this)
+    });
+  };
+
+  MarkdownStudioApp.prototype.render = function () {
+    var isEditorOnly = !this.isPreviewVisible();
+    var leftWidth = 'minmax(0, calc(' + this.state.splitRatio + '% - ' + (DIVIDER_WIDTH / 2) + 'px))';
+    var rightWidth = 'minmax(0, calc(' + (100 - this.state.splitRatio) + '% - ' + (DIVIDER_WIDTH / 2) + 'px))';
+    var paletteItems = this.getFilteredCommandItems();
+    var paletteSelectedIndex = clamp(this.state.commandSelectionIndex, 0, Math.max(0, paletteItems.length - 1));
+    var dividerHintVisible = this.isPreviewVisible() && (this.state.dividerHover || this.state.isDragging);
+    var dividerTitle = this.state.isDragging ? (patch6SplitLabel(this) + ' split') : 'Drag to resize panes';
+    var dividerCopy = this.state.isDragging
+      ? 'Release to keep this width. Double-click to reset.'
+      : 'Double-click to reset to the laptop-friendly editor-first layout.';
+
+    return e('div', {
+      className: cx(
+        'app-shell',
+        this.state.zenMode ? 'is-zen' : '',
+        this.state.focusMode ? 'is-focus-mode' : '',
+        this.state.activePane === 'preview' ? 'focus-preview' : 'focus-editor',
+        this.state.reduceMotion ? 'is-reduced-motion' : '',
+        this.state.toolbarMenu ? 'has-toolbar-panel' : '',
+        this.state.documentMenuOpen ? 'has-doc-popover' : '',
+        this.state.webModeOpen ? 'has-web-modal' : ''
+      ),
+      style: {
+        '--editor-font-size': (this.state.editorFontSize || 15) + 'px'
+      }
+    }, [
+      e(HiddenFileInput, {
+        key: 'hiddenInput',
+        fileInputRef: function (node) { this.fileInputRef = node; }.bind(this),
+        onChange: this.handleFallbackFileOpen
+      }),
+      e(Patch9HiddenBackupInput, {
+        key: 'backupInput',
+        fileInputRef: function (node) { this.workspaceImportInputRef = node; }.bind(this),
+        onChange: this.handleWorkspaceImportInput.bind(this)
+      }),
+      e(ShortcutsModal, {
+        key: 'shortcuts',
+        open: this.state.shortcutsOpen,
+        onClose: this.closeShortcuts
+      }),
+      e(CommandPaletteModal, {
+        key: 'palette',
+        open: this.state.commandPaletteOpen,
+        inputRef: function (node) { this.commandInputRef = node; }.bind(this),
+        query: this.state.commandQuery,
+        onQueryChange: this.handleCommandQueryChange,
+        onKeyDown: this.handleCommandPaletteKeyDown,
+        items: paletteItems,
+        selectedIndex: paletteSelectedIndex,
+        onSelect: this.setCommandSelection,
+        onRun: this.runCommandFromPalette,
+        onClose: this.closeCommandPalette
+      }),
+      this.renderWelcomeModal(),
+      this.renderSettingsModal(),
+      this.renderReleaseNotesModal(),
+      this.renderTemplatesModal(),
+      this.renderVersionsModal(),
+      this.renderStyleStudioModal(),
+      this.renderDiffModal(),
+      this.renderComposerModal(),
+      this.renderWebModeModal(),
+      e('div', { key: 'toastWrap', className: 'toast-wrap' },
+        e(ToastStack, {
+          items: this.state.toasts || [],
+          onDismiss: this.dismissToast.bind(this),
+          onDismissAll: this.dismissToast.bind(this, null)
+        })
+      ),
+      e('div', { key: 'frame', className: 'app-frame' }, [
+        this.renderHeader(),
+        this.renderToolbar(),
+        e('main', { key: 'workspace', className: 'workspace-wrap' }, [
+          e('div', {
+            key: 'grid',
+            ref: function (node) { this.layoutRef = node; }.bind(this),
+            className: cx('workspace-grid', isEditorOnly ? 'is-editor-only' : ''),
+            style: {
+              gridTemplateColumns: isEditorOnly ? 'minmax(0, 1fr)' : (leftWidth + ' ' + DIVIDER_WIDTH + 'px ' + rightWidth)
+            }
+          }, [
+            this.renderEditorPane(),
+            isEditorOnly ? null : e('div', {
+              key: 'divider',
+              onMouseDown: this.startDividerDrag,
+              onMouseEnter: this.handleDividerMouseEnter.bind(this),
+              onMouseLeave: this.handleDividerMouseLeave.bind(this),
+              onDoubleClick: this.handleDividerDoubleClick.bind(this),
+              className: cx('drag-divider', this.state.isDragging ? 'is-dragging' : '', this.state.dividerHover ? 'is-hovered' : ''),
+              title: 'Drag to resize panes'
+            }, dividerHintVisible ? e('div', { className: 'divider-tooltip' }, [
+              e('span', { key: 'title', className: 'divider-tooltip__title' }, dividerTitle),
+              e('span', { key: 'copy', className: 'divider-tooltip__copy' }, dividerCopy)
+            ]) : null),
+            isEditorOnly ? null : this.renderPreviewPane()
+          ]),
+          this.renderUtilitySidebar()
+        ]),
+        this.renderStatusBar()
+      ])
+    ]);
+  };
+
 
   ReactDOM.render(e(MarkdownStudioApp), document.getElementById('app'));
 })();

@@ -1,0 +1,18 @@
+Patch 9 high-level diff
+=======================
+
+Added
+- manifest.webmanifest
+- service-worker.js
+- 404.html
+- .nojekyll
+- PNG install icons
+- GitHub Pages deployment guide
+- App setup modal
+- IndexedDB workspace backup export/import/restore logic
+
+Changed
+- index.html for manifest and install metadata
+- js/app.js for adaptive file handling, browser backup, install/runtime UI, and updated welcome/release notes
+- styles/app.css for App setup modal and web-mode surfaces
+- README, changelog, QA checklist, and sample markdown
