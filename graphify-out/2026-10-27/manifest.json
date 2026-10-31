@@ -1,0 +1,482 @@
+{
+  ".claude-session.template.json": {
+    "mtime": 1793115618.3280647,
+    "seen": 1793115642.485866,
+    "ast_hash": "bb132319f3169ee4e1b961b17fd9d071",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/Patch 7/js/app.js": {
+    "mtime": 1793115027.0593715,
+    "seen": 1793115642.485871,
+    "ast_hash": "633c54b5cfb818e361b06bf72150d930",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch8-files/markdown_editor_pro_patch8_files/js/app.js": {
+    "mtime": 1793115027.07575,
+    "seen": 1793115642.485873,
+    "ast_hash": "5b79fa2a420e4f77ac0a9dac013d3880",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/js/app.js": {
+    "mtime": 1793115027.0867527,
+    "seen": 1793115642.485874,
+    "ast_hash": "0db65a22a5475a38bab3b8386df4de6a",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/service-worker.js": {
+    "mtime": 1793115027.0880005,
+    "seen": 1793115642.485874,
+    "ast_hash": "5e7e2c4ef844b1fcc45cb7843ada613a",
+    "semantic_hash": ""
+  },
+  "js/app.js": {
+    "mtime": 1793115027.091685,
+    "seen": 1793115642.485875,
+    "ast_hash": "0db65a22a5475a38bab3b8386df4de6a",
+    "semantic_hash": ""
+  },
+  "run-local.sh": {
+    "mtime": 1793115027.0933654,
+    "seen": 1793115642.485876,
+    "ast_hash": "e7ed473020063e050455287b854a51d7",
+    "semantic_hash": ""
+  },
+  "service-worker.js": {
+    "mtime": 1793115027.114403,
+    "seen": 1793115642.485876,
+    "ast_hash": "5e7e2c4ef844b1fcc45cb7843ada613a",
+    "semantic_hash": ""
+  },
+  "sync-architecture.sh": {
+    "mtime": 1793115618.3292212,
+    "seen": 1793115642.485877,
+    "ast_hash": "ff5f06384bdc881f2fb88617b889feee",
+    "semantic_hash": ""
+  },
+  "vendor/highlight.min.js": {
+    "mtime": 1793115027.129429,
+    "seen": 1793115642.485877,
+    "ast_hash": "8e8947336d7324c22963d526a5972e03",
+    "semantic_hash": ""
+  },
+  "vendor/marked.js": {
+    "mtime": 1793115027.1303587,
+    "seen": 1793115642.485878,
+    "ast_hash": "288b93fdcd250d0c0ff79360656aa4f4",
+    "semantic_hash": ""
+  },
+  "vendor/react-dom.production.min.js": {
+    "mtime": 1793115027.131089,
+    "seen": 1793115642.485879,
+    "ast_hash": "a28a355129bed93deff523355da98bca",
+    "semantic_hash": ""
+  },
+  "vendor/react.production.min.js": {
+    "mtime": 1793115027.1322992,
+    "seen": 1793115642.485879,
+    "ast_hash": "34f96ffc962a7deecc83037ccb582b58",
+    "semantic_hash": ""
+  },
+  ".project-architecture.md": {
+    "mtime": 1793115619.2278254,
+    "seen": 1793115642.4858801,
+    "ast_hash": "bcee6447da87d5e77a84727b24cb1758",
+    "semantic_hash": ""
+  },
+  ".prompts.md": {
+    "mtime": 1793115618.3271668,
+    "seen": 1793115642.485881,
+    "ast_hash": "3d356e5edfc4f642c778a69db1a3be8e",
+    "semantic_hash": ""
+  },
+  "404.html": {
+    "mtime": 1793115027.0025952,
+    "seen": 1793115642.485881,
+    "ast_hash": "ede9fe677c37af8bb2733a4ee43f47ab",
+    "semantic_hash": ""
+  },
+  "CHANGELOG.md": {
+    "mtime": 1793115027.003113,
+    "seen": 1793115642.485882,
+    "ast_hash": "7ced285af47520b1789c501033c91ec6",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1793115618.3395607,
+    "seen": 1793115642.485883,
+    "ast_hash": "d3d11e525a6477538009f28d925cae50",
+    "semantic_hash": ""
+  },
+  "FINAL_QA_CHECKLIST.md": {
+    "mtime": 1793115027.0035796,
+    "seen": 1793115642.485883,
+    "ast_hash": "6b2e7dedd73397a8fed73b2b05421f9c",
+    "semantic_hash": ""
+  },
+  "GITHUB_PAGES_DEPLOYMENT.md": {
+    "mtime": 1793115027.0043857,
+    "seen": 1793115642.485884,
+    "ast_hash": "cc469884819591e485db88a0a159d123",
+    "semantic_hash": ""
+  },
+  "PATCH_9_AGENT_GUIDE.md": {
+    "mtime": 1793115027.0050468,
+    "seen": 1793115642.485884,
+    "ast_hash": "7c887634db5cd471a790b121e2238d61",
+    "semantic_hash": ""
+  },
+  "PATCH_9_DIFF.txt": {
+    "mtime": 1793115027.0094376,
+    "seen": 1793115642.485885,
+    "ast_hash": "c47127cdfd51038a99a0c3852fa30c3b",
+    "semantic_hash": ""
+  },
+  "PATCH_9_MANIFEST.txt": {
+    "mtime": 1793115027.0109384,
+    "seen": 1793115642.4858859,
+    "ast_hash": "27c9e43bcb4c0916f58f081b14339988",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1793115027.0168478,
+    "seen": 1793115642.4858859,
+    "ast_hash": "e43967ff4de77cef24b6a60e67d93142",
+    "semantic_hash": ""
+  },
+  "THIRD_PARTY_NOTICES.md": {
+    "mtime": 1793115027.0171795,
+    "seen": 1793115642.485887,
+    "ast_hash": "c6bff726c4fc865e4b0fda6032a1ce89",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_2_AGENT_GUIDE.md": {
+    "mtime": 1793115027.0247965,
+    "seen": 1793115642.485888,
+    "ast_hash": "44a127b9d7af2128526d9f91c0ea712e",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_2_DIFF.txt": {
+    "mtime": 1793115027.025243,
+    "seen": 1793115642.485888,
+    "ast_hash": "105ae60f44ac932f059e2fc52975f861",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_2_MANIFEST.txt": {
+    "mtime": 1793115027.0256736,
+    "seen": 1793115642.485889,
+    "ast_hash": "82c44f46799f0cd98764158928e58adb",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_3_AGENT_GUIDE.md": {
+    "mtime": 1793115027.026327,
+    "seen": 1793115642.485889,
+    "ast_hash": "686a704610515b9c38845b459055c63f",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_3_DIFF.txt": {
+    "mtime": 1793115027.0266926,
+    "seen": 1793115642.4858902,
+    "ast_hash": "644a40ab806762cdda4ebbce4b15bc51",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_3_MANIFEST.txt": {
+    "mtime": 1793115027.0280845,
+    "seen": 1793115642.485891,
+    "ast_hash": "3ccc198beaa2a95d2b984f162de3c12a",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_4_AGENT_GUIDE.md": {
+    "mtime": 1793115027.028612,
+    "seen": 1793115642.485891,
+    "ast_hash": "c7cdbacfc4b72faad4cba278ffff3c8b",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_4_DIFF.txt": {
+    "mtime": 1793115027.0313537,
+    "seen": 1793115642.485892,
+    "ast_hash": "c84414e6d5f0a6aaeb1b620b0dee6b7a",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_4_MANIFEST.txt": {
+    "mtime": 1793115027.0342343,
+    "seen": 1793115642.485893,
+    "ast_hash": "5916702f2a13a7ed9039be074266ad3f",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_5_AGENT_GUIDE.md": {
+    "mtime": 1793115027.0365472,
+    "seen": 1793115642.485893,
+    "ast_hash": "39f7dd2d2205c9c9a159f090f1ddf09e",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_5_DIFF.txt": {
+    "mtime": 1793115027.038767,
+    "seen": 1793115642.485894,
+    "ast_hash": "6812fba29aea0551324107551fba31f7",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_5_MANIFEST.txt": {
+    "mtime": 1793115027.0395794,
+    "seen": 1793115642.485895,
+    "ast_hash": "d3ba5b9a221154a10d00ed070ea98ab5",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_6_AGENT_GUIDE.md": {
+    "mtime": 1793115027.041775,
+    "seen": 1793115642.485895,
+    "ast_hash": "656b70d140526d6f023ea57b3829ec20",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_6_DIFF.txt": {
+    "mtime": 1793115027.042291,
+    "seen": 1793115642.4858959,
+    "ast_hash": "c770759496390e21e4db2d03aa714381",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_6_MANIFEST.txt": {
+    "mtime": 1793115027.0426643,
+    "seen": 1793115642.485897,
+    "ast_hash": "d4c08adbbe98b479eb0f04ba3f976e5d",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_7_AGENT_GUIDE.md": {
+    "mtime": 1793115027.0432184,
+    "seen": 1793115642.485897,
+    "ast_hash": "cbb8af1730044b76a62bd5cf2d314216",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_7_DIFF.txt": {
+    "mtime": 1793115027.0436766,
+    "seen": 1793115642.485898,
+    "ast_hash": "ac53ac427d729f1fffc3490c24dff27e",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_7_MANIFEST.txt": {
+    "mtime": 1793115027.0457149,
+    "seen": 1793115642.485898,
+    "ast_hash": "6419ddceed9c824aa5f8471316bd4e6b",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_8_AGENT_GUIDE.md": {
+    "mtime": 1793115027.0476613,
+    "seen": 1793115642.4859,
+    "ast_hash": "4f39cfb7b76dfabb6a6092d0e95e2990",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_8_DIFF.txt": {
+    "mtime": 1793115027.050101,
+    "seen": 1793115642.4859,
+    "ast_hash": "30eb1a850125b7c22d1a9e392942d189",
+    "semantic_hash": ""
+  },
+  "docs/patches/PATCH_8_MANIFEST.txt": {
+    "mtime": 1793115027.0505495,
+    "seen": 1793115642.485901,
+    "ast_hash": "9de070628d6b3a0d2f8941f72d3f0df6",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/Patch 7/CHANGELOG.md": {
+    "mtime": 1793115027.0517688,
+    "seen": 1793115642.485901,
+    "ast_hash": "76d9ddcabcba9ca40e35eb8ebaee2045",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/Patch 7/FINAL_QA_CHECKLIST.md": {
+    "mtime": 1793115027.0522344,
+    "seen": 1793115642.485902,
+    "ast_hash": "17f90a732b4c5c94ed794a05f8753f3d",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/Patch 7/PATCH_7_AGENT_GUIDE.md": {
+    "mtime": 1793115027.0525756,
+    "seen": 1793115642.485902,
+    "ast_hash": "cbb8af1730044b76a62bd5cf2d314216",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/Patch 7/PATCH_7_DIFF.txt": {
+    "mtime": 1793115027.0530417,
+    "seen": 1793115642.485903,
+    "ast_hash": "ac53ac427d729f1fffc3490c24dff27e",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/Patch 7/PATCH_7_MANIFEST.txt": {
+    "mtime": 1793115027.054672,
+    "seen": 1793115642.485904,
+    "ast_hash": "6419ddceed9c824aa5f8471316bd4e6b",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/Patch 7/README.md": {
+    "mtime": 1793115027.0578208,
+    "seen": 1793115642.485904,
+    "ast_hash": "6ec5623d8fd11752dcc3243ab4ca4c3f",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/Patch 7/sample.md": {
+    "mtime": 1793115027.0599408,
+    "seen": 1793115642.485905,
+    "ast_hash": "7e3d1cf7628f46856ea954765049284d",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch8-files/markdown_editor_pro_patch8_files/CHANGELOG.md": {
+    "mtime": 1793115027.0717456,
+    "seen": 1793115642.485905,
+    "ast_hash": "6cb52dfaa49034968e580243caa82343",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch8-files/markdown_editor_pro_patch8_files/FINAL_QA_CHECKLIST.md": {
+    "mtime": 1793115027.0723398,
+    "seen": 1793115642.485906,
+    "ast_hash": "ff96a47bc50854888c0efdabd6fbbd99",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch8-files/markdown_editor_pro_patch8_files/PATCH_8_AGENT_GUIDE.md": {
+    "mtime": 1793115027.0730026,
+    "seen": 1793115642.4859068,
+    "ast_hash": "4f39cfb7b76dfabb6a6092d0e95e2990",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch8-files/markdown_editor_pro_patch8_files/PATCH_8_DIFF.txt": {
+    "mtime": 1793115027.0737386,
+    "seen": 1793115642.4859068,
+    "ast_hash": "30eb1a850125b7c22d1a9e392942d189",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch8-files/markdown_editor_pro_patch8_files/PATCH_8_MANIFEST.txt": {
+    "mtime": 1793115027.0744414,
+    "seen": 1793115642.485908,
+    "ast_hash": "9de070628d6b3a0d2f8941f72d3f0df6",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch8-files/markdown_editor_pro_patch8_files/README.md": {
+    "mtime": 1793115027.074852,
+    "seen": 1793115642.485908,
+    "ast_hash": "a929c8d1005a1e752b44a224026635a3",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch8-files/markdown_editor_pro_patch8_files/sample.md": {
+    "mtime": 1793115027.0765789,
+    "seen": 1793115642.485909,
+    "ast_hash": "32afab85ec8e520aa4b1d94db309b2c8",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/404.html": {
+    "mtime": 1793115027.0803878,
+    "seen": 1793115642.48591,
+    "ast_hash": "ede9fe677c37af8bb2733a4ee43f47ab",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/CHANGELOG.md": {
+    "mtime": 1793115027.0808606,
+    "seen": 1793115642.48591,
+    "ast_hash": "7ced285af47520b1789c501033c91ec6",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/FINAL_QA_CHECKLIST.md": {
+    "mtime": 1793115027.0811903,
+    "seen": 1793115642.4859111,
+    "ast_hash": "6b2e7dedd73397a8fed73b2b05421f9c",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/GITHUB_PAGES_DEPLOYMENT.md": {
+    "mtime": 1793115027.0820749,
+    "seen": 1793115642.4859111,
+    "ast_hash": "cc469884819591e485db88a0a159d123",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/PATCH_9_AGENT_GUIDE.md": {
+    "mtime": 1793115027.0825198,
+    "seen": 1793115642.485912,
+    "ast_hash": "7c887634db5cd471a790b121e2238d61",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/PATCH_9_DIFF.txt": {
+    "mtime": 1793115027.082927,
+    "seen": 1793115642.485913,
+    "ast_hash": "c47127cdfd51038a99a0c3852fa30c3b",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/PATCH_9_MANIFEST.txt": {
+    "mtime": 1793115027.0832062,
+    "seen": 1793115642.485913,
+    "ast_hash": "27c9e43bcb4c0916f58f081b14339988",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/README.md": {
+    "mtime": 1793115027.0836606,
+    "seen": 1793115642.4859142,
+    "ast_hash": "e43967ff4de77cef24b6a60e67d93142",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/index.html": {
+    "mtime": 1793115027.085289,
+    "seen": 1793115642.485915,
+    "ast_hash": "83e6e2f0e6f2e16de699960e50977c13",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/sample.md": {
+    "mtime": 1793115027.08765,
+    "seen": 1793115642.485915,
+    "ast_hash": "b8e8d8cf245530030ce8b89c707d42ad",
+    "semantic_hash": ""
+  },
+  "implementation_plan.md": {
+    "mtime": 1793115027.0894694,
+    "seen": 1793115642.485916,
+    "ast_hash": "a463c4648481413e8751be89af45bcab",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1793115027.090272,
+    "seen": 1793115642.485916,
+    "ast_hash": "83e6e2f0e6f2e16de699960e50977c13",
+    "semantic_hash": ""
+  },
+  "sample.md": {
+    "mtime": 1793115027.1121523,
+    "seen": 1793115642.4859169,
+    "ast_hash": "b8e8d8cf245530030ce8b89c707d42ad",
+    "semantic_hash": ""
+  },
+  "assets/apple-touch-icon.png": {
+    "mtime": 1793115027.017746,
+    "seen": 1793115642.485918,
+    "ast_hash": "f73e5cc18bf01230a21c95dbaae453c7",
+    "semantic_hash": ""
+  },
+  "assets/icon-192.png": {
+    "mtime": 1793115027.0188339,
+    "seen": 1793115642.485918,
+    "ast_hash": "78405728ee3821ec75aef385c5a7eac5",
+    "semantic_hash": ""
+  },
+  "assets/icon-512.png": {
+    "mtime": 1793115027.0199757,
+    "seen": 1793115642.485919,
+    "ast_hash": "ddb26a8bfad49f853eeb4da3b429f071",
+    "semantic_hash": ""
+  },
+  "assets/icon.svg": {
+    "mtime": 1793115027.02117,
+    "seen": 1793115642.485919,
+    "ast_hash": "c90e78908a8d86d621c7f016f41c8f03",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/assets/apple-touch-icon.png": {
+    "mtime": 1793115027.08426,
+    "seen": 1793115642.48592,
+    "ast_hash": "f73e5cc18bf01230a21c95dbaae453c7",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/assets/icon-192.png": {
+    "mtime": 1793115027.0846262,
+    "seen": 1793115642.485921,
+    "ast_hash": "78405728ee3821ec75aef385c5a7eac5",
+    "semantic_hash": ""
+  },
+  "docs/patches/Patches/markdown-studio-local-patch9-files/markdown_editor_pro_patch9_files/assets/icon-512.png": {
+    "mtime": 1793115027.0849512,
+    "seen": 1793115642.485921,
+    "ast_hash": "ddb26a8bfad49f853eeb4da3b429f071",
+    "semantic_hash": ""
+  }
+}
