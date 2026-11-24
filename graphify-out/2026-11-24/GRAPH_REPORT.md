@@ -1,17 +1,17 @@
 # Graph Report - Markdown-studio  (2026-11-24)
 
 ## Corpus Check
-- 56 files · ~225,430 words
+- 72 files · ~244,789 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 14 file(s) not represented in the graph (top: .css 7, (none) 3, .webmanifest 2)
+- Unclassified: 15 file(s) not represented in the graph (top: .css 7, (none) 3, .webmanifest 2)
 
 ## Summary
-- 2021 nodes · 5166 edges · 92 communities (83 shown, 9 thin omitted)
-- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 370 edges (avg confidence: 0.85)
+- 2231 nodes · 5365 edges · 106 communities (95 shown, 11 thin omitted)
+- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 371 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2b383750`
+- Built from commit: `5c30817b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -108,6 +108,20 @@
 - COLLABORATORS.md
 - PLANNING-CHAT-PROMPT.md
 - CONTEXT: read this first in every new session
+- 1.4 Mermaid — Cancellation Sequence Diagrams
+- Cancellation — Temporal Workflow
+- 5.20.3 Trip Data Model Changes
+- LLD — Project Repository Initial Setup & Architecture
+- Ideas: One Platform, Many Apps
+- REPO SECTIONS
+- Supply Cancellation Execute — Success / Failure Event Flow
+- CX Cancellation Flow
+- 6.6 Refund Quote Entity
+- Prompt Playbook — CLAUDE.md Workflow
+- Repo Kit (every repo must have these)
+- Agent/sync-architecture.sh
+- COLLABORATOR-DESIGN-CHAT-PROMPT.md
+- prompts/PLANNING-CHAT-PROMPT.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `MarkdownStudioApp()` - 222 edges
@@ -132,7 +146,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (92 total, 9 thin omitted)
+## Communities (106 total, 11 thin omitted)
 
 ### Community 0 - "markdown_editor_pro_patch9_files/js/app.js"
 Cohesion: 0.07
@@ -147,8 +161,8 @@ Cohesion: 0.04
 Nodes (31): Nb(), Af(), Bf(), $c(), ce(), Cf(), df(), Ed() (+23 more)
 
 ### Community 3 - "highlight.min.js"
-Cohesion: 0.06
-Nodes (41): 🔄 Auto-Sync: System Architecture & Graphify, ⏱️ Communication Constraints (Zero Waste Mode), Context, 📐 Engineering Guardrails, 🎨 Frontend Architecture, UI/UX & Motion Standard, 🛠️ Project Execution Modes (Personal vs. Organization), 🤖 System Architecture & Co-Worker Protocol, 📉 Token-Optimized Communication Mode (+33 more)
+Cohesion: 0.05
+Nodes (48): 🔄 Auto-Sync: System Architecture & Graphify, ⏱️ Communication Constraints (Zero Waste Mode), Context, 📐 Engineering Guardrails, 🎨 Frontend Architecture, UI/UX & Motion Standard, 🛠️ Project Execution Modes (Personal vs. Organization), STANDING RULES (from Gokul, apply in every session), 🤖 System Architecture & Co-Worker Protocol (+40 more)
 
 ### Community 4 - "MarkdownStudioApp"
 Cohesion: 0.05
@@ -463,27 +477,75 @@ Cohesion: 0.33
 Nodes (5): Definition of done (any step), Deploy-ready rules (every repo), Master docs (live in `platform/docs/`), Repo Kit (every repo must have these), Shared constants (from `@gokulsaraswat/ui`, same on every app)
 
 ### Community 91 - "CONTEXT: read this first in every new session"
+Cohesion: 0.20
+Nodes (9): CONTEXT: read this first in every new session, Future changes (expect these; do not block them), How repos interact (the contracts), Repo map, STANDING RULES (from Gokul, apply in every session), This repo: Markdown-studio, Vision, Work modes (ask Gokul which one if unclear) (+1 more)
+
+### Community 92 - "1.4 Mermaid — Cancellation Sequence Diagrams"
+Cohesion: 0.05
+Nodes (37): 1.1 Scope, 1.2 Actors & Boundaries, 1.3 Functional Breakdown (Low-Level), 1.4.1 Discovery, 1.4.2 Quote, 1.4.3 Execute, 1.4.4 Callback & Workflow Completion, 1.4.5 Status Poll (+29 more)
+
+### Community 93 - "Cancellation — Temporal Workflow"
+Cohesion: 0.07
+Nodes (29): 1.1 Purpose, 1.2 Key design decisions, 1.3 Workflow settings, 1. Overview, 2.1 Three-phase flow, 2.2 Multi-pod signal routing, 2. Architecture, 3.1 Step sequence (+21 more)
+
+### Community 94 - "5.20.3 Trip Data Model Changes"
+Cohesion: 0.07
+Nodes (26): 5.20.1 Overview, 5.20.2.1 Overview, 5.20.2.2 Segment entries, 5.20.2.3 Ancillary entries, 5.20.2.4 Sample hold response (abbreviated), 5.20.2.5 Key principles, 5.20.2 Hold Response Changes, 5.20.3.1 Overview (+18 more)
+
+### Community 95 - "LLD — Project Repository Initial Setup & Architecture"
+Cohesion: 0.08
+Nodes (24): 1.1 Purpose, 1.2 Tech Stack, 1.3 High-Level System Context, 1. Executive Summary & Tech Stack, 2.1 Gradle Multi-Module Layout, 2.2 Package Tree (ASCII), 2.3 Module Responsibilities, 2. Directory & Module Structure (+16 more)
+
+### Community 96 - "Ideas: One Platform, Many Apps"
+Cohesion: 0.13
+Nodes (14): 10. Open questions, 11. Excellidraw opensource, 1. Vision, 2. Current state (checked in repos), 3. Framework, 4. Content & CMS, 5. Roles (super admin → app admins), 6. Shared packages (so "every component works everywhere") (+6 more)
+
+### Community 97 - "REPO SECTIONS"
+Cohesion: 0.14
+Nodes (13): 1. platform (first), 2. admin, 3. gokulmobilize, 4. bestportofolio, 5. Progress (GSpace), 6. Markdown-studio  (TO BE UPDATED: scope still open, revisit after the first 5 repos), 7. checkers-gym-management  (TO BE UPDATED: scope still open, revisit after admin works), 8. gokul-omni-converter  (TO BE UPDATED: standalone, not part of the web platform) (+5 more)
+
+### Community 98 - "Supply Cancellation Execute — Success / Failure Event Flow"
+Cohesion: 0.18
+Nodes (10): 1. Overview, 2. Actors, 3. Success Path, 4.1 Agent Action (Manual Queue), 4. Failure Path, 5. Flow Diagram, 6. Notes, ASCII (+2 more)
+
+### Community 99 - "CX Cancellation Flow"
 Cohesion: 0.22
-Nodes (8): CONTEXT: read this first in every new session, Future changes (expect these; do not block them), How repos interact (the contracts), Repo map, This repo: Markdown-studio, Vision, Work modes (ask Gokul which one if unclear), Working rules
+Nodes (8): Actors, CX Cancellation Flow, Flowchart, Notes, Open Issue — `quote_id` on Execute, Phase 1 — Cancel Discovery (via Trips), Phase 2 — Refund Discovery (Quote), Phase 3 — Cancellation Execute
+
+### Community 100 - "6.6 Refund Quote Entity"
+Cohesion: 0.22
+Nodes (8): 6.6 Refund Quote Entity, 6.6 Refund Quote Entity (Redis), Design principles, Field reference, Penalty fields, Quote API vs Redis (example), Redis JSON, Relationship to §6.5 Snapshot
+
+### Community 101 - "Prompt Playbook — CLAUDE.md Workflow"
+Cohesion: 0.25
+Nodes (7): 1. Starting a New Folder / Project, 2. Starting with an Existing Project, 3. The "After-Command" Chaser, 4. Start / Debug Prompt Template, 5. Session Wrap-Up Prompt Template, 6. The Context Recovery Prompt (Anti-Hallucination Trigger), Prompt Playbook — CLAUDE.md Workflow
+
+### Community 102 - "Repo Kit (every repo must have these)"
+Cohesion: 0.33
+Nodes (5): Definition of done (any step), Deploy-ready rules (every repo), Master docs (live in `platform/docs/`), Repo Kit (every repo must have these), Shared constants (from `@gokulsaraswat/ui`, same on every app)
+
+### Community 103 - "Agent/sync-architecture.sh"
+Cohesion: 0.70
+Nodes (3): edge(), node(), sync-architecture.sh script
 
 ## Knowledge Gaps
-- **321 isolated node(s):** `📐 Engineering Guardrails`, `📉 Token-Optimized Communication Mode`, `🛠️ Project Execution Modes (Personal vs. Organization)`, `⏱️ Communication Constraints (Zero Waste Mode)`, `🧪 Verification Scope (Token-Efficient Testing)` (+316 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 531 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **474 isolated node(s):** `1. High-Level Design (HLD) Topology`, `2. Current Target Directory Tree`, `3. Low-Level Design (LLD) & SOLID Class Schemas`, `1. Starting a New Folder / Project`, `2. Starting with an Existing Project` (+469 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 699 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `markdown_editor_pro_patch9_files/js/app.js`, `.renderVersionsModal`, `.renderDocumentPopover`, `.patch7InsertQuickSnippetAtRange`, `.renderToolbarDropdown`, `.exportWorkspaceBackup`, `.showToast`, `.componentDidMount`, `.handleExportDocx`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `.render`, `maybePreventDefault`, `.renderToolbarDropdown`, `markdown_editor_pro_patch8_files/js/app.js`, `clamp`, `.showToast`, `.updateMarkdown`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `Markdown-studio/js/app.js`, `.renderVersionsModal`, `.renderDocumentPopover`, `.patch7InsertQuickSnippetAtRange`, `.renderToolbarDropdown`, `.showToast`, `.exportWorkspaceBackup`, `.componentDidMount`, `.handleExportDocx`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `.renderVersionsModal`, `.renderEditorPane`, `Patch 7/js/app.js`, `.renderToolbarDropdown`, `.showToast`, `.render`, `.componentDidMount`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Are the 24 inferred relationships involving `Nb()` (e.g. with `react-dom.production.min.js` and `ab()`) actually correct?**
   _`Nb()` has 24 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `📐 Engineering Guardrails`, `📉 Token-Optimized Communication Mode`, `🛠️ Project Execution Modes (Personal vs. Organization)` to the rest of the system?**
-  _321 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `1. High-Level Design (HLD) Topology`, `2. Current Target Directory Tree`, `3. Low-Level Design (LLD) & SOLID Class Schemas` to the rest of the system?**
+  _474 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `markdown_editor_pro_patch9_files/js/app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.06558558558558558 - nodes in this community are weakly interconnected._
 - **Should `Markdown-studio/js/app.js` be split into smaller, more focused modules?**
