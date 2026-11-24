@@ -16,6 +16,10 @@ https://gokulsaraswat.github.io/Markdown-studio/. Upgrade run phase A (inventory
   backup export/import/restore, theme, reload persistence, manifest, offline reload. 48/48 ok, 0 console errors;
   `tests/smoke/baseline.fingerprint.json` is the timing-free baseline (two runs identical).
 
+- 2026-11-25 docs/ARCHITECTURE.md added (runtime, files, app.js patch layering, storage keys, SW strategy).
+  Backlog: MDS-B-001 (P1, unsanitized preview HTML executes inline handlers, verified), MDS-B-002..004 (a11y),
+  MDS-I-002/003, MDS-F-001, MDS-D-003..005.
+
 ## In progress / next
 - Phase A: docs/ARCHITECTURE.md, docs/FEATURES.md (inventory + shortcut list + baseline numbers), smoke walk.
 
