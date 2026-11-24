@@ -1,17 +1,17 @@
 # Graph Report - Markdown-studio  (2026-11-24)
 
 ## Corpus Check
-- 55 files · ~224,831 words
+- 56 files · ~225,430 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: .css 7, (none) 3, .webmanifest 2)
 
 ## Summary
-- 2011 nodes · 5157 edges · 91 communities (82 shown, 9 thin omitted)
+- 2021 nodes · 5166 edges · 92 communities (83 shown, 9 thin omitted)
 - Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 370 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4151fb8a`
+- Built from commit: `2b383750`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -107,6 +107,7 @@
 - AGENTS.md
 - COLLABORATORS.md
 - PLANNING-CHAT-PROMPT.md
+- CONTEXT: read this first in every new session
 
 ## God Nodes (most connected - your core abstractions)
 1. `MarkdownStudioApp()` - 222 edges
@@ -131,7 +132,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (91 total, 9 thin omitted)
+## Communities (92 total, 9 thin omitted)
 
 ### Community 0 - "markdown_editor_pro_patch9_files/js/app.js"
 Cohesion: 0.07
@@ -146,8 +147,8 @@ Cohesion: 0.04
 Nodes (31): Nb(), Af(), Bf(), $c(), ce(), Cf(), df(), Ed() (+23 more)
 
 ### Community 3 - "highlight.min.js"
-Cohesion: 0.07
-Nodes (40): 🔄 Auto-Sync: System Architecture & Graphify, ⏱️ Communication Constraints (Zero Waste Mode), 📐 Engineering Guardrails, 🎨 Frontend Architecture, UI/UX & Motion Standard, 🛠️ Project Execution Modes (Personal vs. Organization), 🤖 System Architecture & Co-Worker Protocol, 📉 Token-Optimized Communication Mode, 🧪 Verification Scope (Token-Efficient Testing) (+32 more)
+Cohesion: 0.06
+Nodes (41): 🔄 Auto-Sync: System Architecture & Graphify, ⏱️ Communication Constraints (Zero Waste Mode), Context, 📐 Engineering Guardrails, 🎨 Frontend Architecture, UI/UX & Motion Standard, 🛠️ Project Execution Modes (Personal vs. Organization), 🤖 System Architecture & Co-Worker Protocol, 📉 Token-Optimized Communication Mode (+33 more)
 
 ### Community 4 - "MarkdownStudioApp"
 Cohesion: 0.05
@@ -461,24 +462,28 @@ Nodes (5): 6. Markdown-studio  (TO BE UPDATED: scope still open, revisit after t
 Cohesion: 0.33
 Nodes (5): Definition of done (any step), Deploy-ready rules (every repo), Master docs (live in `platform/docs/`), Repo Kit (every repo must have these), Shared constants (from `@gokulsaraswat/ui`, same on every app)
 
+### Community 91 - "CONTEXT: read this first in every new session"
+Cohesion: 0.22
+Nodes (8): CONTEXT: read this first in every new session, Future changes (expect these; do not block them), How repos interact (the contracts), Repo map, This repo: Markdown-studio, Vision, Work modes (ask Gokul which one if unclear), Working rules
+
 ## Knowledge Gaps
-- **313 isolated node(s):** `Planning Chat: resume prompt`, `URGENT (Gokul only)`, `Where each repo stands`, `Requests waiting for the `platform` repo (collected from repo logs; platform chat applies, planning chat syncs)`, `GitHub / sync status (2026-11-14)` (+308 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 522 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **321 isolated node(s):** `📐 Engineering Guardrails`, `📉 Token-Optimized Communication Mode`, `🛠️ Project Execution Modes (Personal vs. Organization)`, `⏱️ Communication Constraints (Zero Waste Mode)`, `🧪 Verification Scope (Token-Efficient Testing)` (+316 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 531 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `markdown_editor_pro_patch9_files/js/app.js`, `.renderVersionsModal`, `.renderDocumentPopover`, `.patch7InsertQuickSnippetAtRange`, `.renderToolbarDropdown`, `.exportWorkspaceBackup`, `.showToast`, `.componentDidMount`, `.handleExportDocx`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
-- **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `.render`, `maybePreventDefault`, `.renderToolbarDropdown`, `markdown_editor_pro_patch8_files/js/app.js`, `clamp`, `.showToast`, `.updateMarkdown`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `Markdown-studio/js/app.js`, `.renderVersionsModal`, `.renderDocumentPopover`, `.patch7InsertQuickSnippetAtRange`, `.renderToolbarDropdown`, `.showToast`, `.exportWorkspaceBackup`, `.componentDidMount`, `.handleExportDocx`?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `.renderVersionsModal`, `.renderEditorPane`, `Patch 7/js/app.js`, `.renderToolbarDropdown`, `.showToast`, `.render`, `.componentDidMount`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Are the 24 inferred relationships involving `Nb()` (e.g. with `react-dom.production.min.js` and `ab()`) actually correct?**
   _`Nb()` has 24 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `Planning Chat: resume prompt`, `URGENT (Gokul only)`, `Where each repo stands` to the rest of the system?**
-  _313 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `📐 Engineering Guardrails`, `📉 Token-Optimized Communication Mode`, `🛠️ Project Execution Modes (Personal vs. Organization)` to the rest of the system?**
+  _321 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `markdown_editor_pro_patch9_files/js/app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.06558558558558558 - nodes in this community are weakly interconnected._
 - **Should `Markdown-studio/js/app.js` be split into smaller, more focused modules?**

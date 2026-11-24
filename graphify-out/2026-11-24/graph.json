@@ -23365,7 +23365,7 @@
       "node_kind": "heading",
       "norm_label": "agreed order",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L233"
+      "source_location": "L265"
     },
     {
       "id": "docs_master_worklog_architecture_agreed_2026_10_31",
@@ -23377,7 +23377,7 @@
       "node_kind": "heading",
       "norm_label": "architecture (agreed 2026-10-31)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L169"
+      "source_location": "L201"
     },
     {
       "id": "docs_master_worklog_cleanup_scan_cleanscan_claude_slash_command",
@@ -23389,7 +23389,7 @@
       "node_kind": "heading",
       "norm_label": "cleanup scan: `/cleanscan` (claude slash command)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L49"
+      "source_location": "L81"
     },
     {
       "id": "docs_master_worklog_commit_push_everything_gitmd_claude_slash_command",
@@ -23401,7 +23401,7 @@
       "node_kind": "heading",
       "norm_label": "commit + push everything: `/gitmd` (claude slash command)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L45"
+      "source_location": "L77"
     },
     {
       "id": "docs_master_worklog_current_focus",
@@ -23413,7 +23413,7 @@
       "node_kind": "heading",
       "norm_label": "current focus",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L73"
+      "source_location": "L105"
     },
     {
       "id": "docs_master_worklog_decisions",
@@ -23425,7 +23425,7 @@
       "node_kind": "heading",
       "norm_label": "decisions",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L81"
+      "source_location": "L113"
     },
     {
       "id": "docs_master_worklog_dropped",
@@ -23437,7 +23437,7 @@
       "node_kind": "heading",
       "norm_label": "dropped",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L157"
+      "source_location": "L189"
     },
     {
       "id": "docs_master_worklog_far_later",
@@ -23449,7 +23449,7 @@
       "node_kind": "heading",
       "norm_label": "far later",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L153"
+      "source_location": "L185"
     },
     {
       "id": "docs_master_worklog_findings_bestportofolio_read_only_2026_10_31",
@@ -23461,7 +23461,19 @@
       "node_kind": "heading",
       "norm_label": "findings: bestportofolio (read-only, 2026-10-31)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L226"
+      "source_location": "L258"
+    },
+    {
+      "id": "docs_master_worklog_github_sync_status_2026_11_14",
+      "label": "GitHub / sync status (2026-11-14)",
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "WORKLOG",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "github / sync status (2026-11-14)",
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L35"
     },
     {
       "id": "docs_master_worklog_gmobilize_hub_design_proposed_2026_10_31_stack_not_final",
@@ -23473,7 +23485,7 @@
       "node_kind": "heading",
       "norm_label": "gmobilize hub design (proposed 2026-10-31, stack not final)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L180"
+      "source_location": "L212"
     },
     {
       "id": "docs_master_worklog_later_design_to_be_discussed",
@@ -23485,7 +23497,7 @@
       "node_kind": "heading",
       "norm_label": "later (design to be discussed)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L123"
+      "source_location": "L155"
     },
     {
       "id": "docs_master_worklog_now_2_3_days",
@@ -23497,7 +23509,7 @@
       "node_kind": "heading",
       "norm_label": "now (2-3 days)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L97"
+      "source_location": "L129"
     },
     {
       "id": "docs_master_worklog_open_questions",
@@ -23509,7 +23521,7 @@
       "node_kind": "heading",
       "norm_label": "open questions",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L240"
+      "source_location": "L272"
     },
     {
       "id": "docs_master_worklog_platform_order_from_ideas_md_9",
@@ -23521,7 +23533,7 @@
       "node_kind": "heading",
       "norm_label": "platform order (from ideas.md \u00a79)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L160"
+      "source_location": "L192"
     },
     {
       "id": "docs_master_worklog_process_decided_2026_10_31",
@@ -23533,7 +23545,7 @@
       "node_kind": "heading",
       "norm_label": "process (decided 2026-10-31)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L190"
+      "source_location": "L222"
     },
     {
       "id": "docs_master_worklog_reminders_claude_raise_these_in_the_planning_chat_do_not_let_gokul_forget",
@@ -23545,7 +23557,7 @@
       "node_kind": "heading",
       "norm_label": "reminders (claude: raise these in the planning chat, do not let gokul forget)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L8"
+      "source_location": "L40"
     },
     {
       "id": "docs_master_worklog_repos_all_under_users_gokulsaraswat_vc_documents_project",
@@ -23557,7 +23569,31 @@
       "node_kind": "heading",
       "norm_label": "repos (all under /users/gokulsaraswat.vc/documents/project)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L63"
+      "source_location": "L95"
+    },
+    {
+      "id": "docs_master_worklog_requests_waiting_for_the_platform_repo_collected_from_repo_logs_platform_chat_applies_planning_chat_syncs",
+      "label": "Requests waiting for the `platform` repo (collected from repo logs; platform chat applies, planning chat syncs)",
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "WORKLOG",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "requests waiting for the `platform` repo (collected from repo logs; platform chat applies, planning chat syncs)",
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L28"
+    },
+    {
+      "id": "docs_master_worklog_resume_here_verified_read_only_on_2026_11_14_by_the_planning_chat_repo_logs_were_read_builds_ci_not_re_run",
+      "label": "RESUME HERE (verified read-only on 2026-11-14 by the planning chat; repo logs were read, builds/CI NOT re-run)",
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "WORKLOG",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "resume here (verified read-only on 2026-11-14 by the planning chat; repo logs were read, builds/ci not re-run)",
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L8"
     },
     {
       "id": "docs_master_worklog_runbook_one_step_at_a_time_gokul_asks_what_next_claude_answers_from_here",
@@ -23569,7 +23605,7 @@
       "node_kind": "heading",
       "norm_label": "runbook (one step at a time; gokul asks \"what next\", claude answers from here)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L25"
+      "source_location": "L57"
     },
     {
       "id": "docs_master_worklog_session_log",
@@ -23581,7 +23617,7 @@
       "node_kind": "heading",
       "norm_label": "session log",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L247"
+      "source_location": "L279"
     },
     {
       "id": "docs_master_worklog_to_do",
@@ -23593,7 +23629,31 @@
       "node_kind": "heading",
       "norm_label": "to-do",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L96"
+      "source_location": "L128"
+    },
+    {
+      "id": "docs_master_worklog_urgent_gokul_only",
+      "label": "URGENT (Gokul only)",
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "WORKLOG",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "urgent (gokul only)",
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "docs_master_worklog_where_each_repo_stands",
+      "label": "Where each repo stands",
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "WORKLOG",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "where each repo stands",
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L16"
     },
     {
       "id": "docs_master_worklog_why_everything_is_logged_gokul_2026_10_31",
@@ -23605,7 +23665,7 @@
       "node_kind": "heading",
       "norm_label": "why everything is logged (gokul, 2026-10-31)",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L55"
+      "source_location": "L87"
     },
     {
       "id": "docs_master_worklog_working_agreement",
@@ -23617,7 +23677,7 @@
       "node_kind": "heading",
       "norm_label": "working agreement",
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L58"
+      "source_location": "L90"
     },
     {
       "id": "docs_master_worklog_worklog",
@@ -60464,36 +60524,47 @@
       "weight": 1.0
     },
     {
-      "source": "docs_master_worklog_to_do",
-      "target": "docs_master_worklog_later_design_to_be_discussed",
+      "source": "docs_master_worklog_resume_here_verified_read_only_on_2026_11_14_by_the_planning_chat_repo_logs_were_read_builds_ci_not_re_run",
+      "target": "docs_master_worklog_urgent_gokul_only",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L123",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
-      "source": "docs_master_worklog_to_do",
-      "target": "docs_master_worklog_far_later",
+      "source": "docs_master_worklog_resume_here_verified_read_only_on_2026_11_14_by_the_planning_chat_repo_logs_were_read_builds_ci_not_re_run",
+      "target": "docs_master_worklog_where_each_repo_stands",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L153",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
-      "source": "docs_master_worklog_to_do",
-      "target": "docs_master_worklog_dropped",
+      "source": "docs_master_worklog_resume_here_verified_read_only_on_2026_11_14_by_the_planning_chat_repo_logs_were_read_builds_ci_not_re_run",
+      "target": "docs_master_worklog_requests_waiting_for_the_platform_repo_collected_from_repo_logs_platform_chat_applies_planning_chat_syncs",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L157",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_resume_here_verified_read_only_on_2026_11_14_by_the_planning_chat_repo_logs_were_read_builds_ci_not_re_run",
+      "target": "docs_master_worklog_github_sync_status_2026_11_14",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -60504,161 +60575,40 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L97",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_platform_order_from_ideas_md_9",
+      "source": "docs_master_worklog_to_do",
+      "target": "docs_master_worklog_later_design_to_be_discussed",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L160",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_architecture_agreed_2026_10_31",
+      "source": "docs_master_worklog_to_do",
+      "target": "docs_master_worklog_far_later",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L169",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_gmobilize_hub_design_proposed_2026_10_31_stack_not_final",
+      "source": "docs_master_worklog_to_do",
+      "target": "docs_master_worklog_dropped",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L180",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_process_decided_2026_10_31",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L190",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_findings_bestportofolio_read_only_2026_10_31",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L226",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_agreed_order",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L233",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_open_questions",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L240",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_session_log",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L247",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_runbook_one_step_at_a_time_gokul_asks_what_next_claude_answers_from_here",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L25",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_commit_push_everything_gitmd_claude_slash_command",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L45",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_cleanup_scan_cleanscan_claude_slash_command",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L49",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_why_everything_is_logged_gokul_2026_10_31",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L55",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_working_agreement",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L58",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_repos_all_under_users_gokulsaraswat_vc_documents_project",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L63",
+      "source_location": "L189",
       "weight": 1.0
     },
     {
@@ -60669,18 +60619,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L73",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_master_worklog_worklog",
-      "target": "docs_master_worklog_reminders_claude_raise_these_in_the_planning_chat_do_not_let_gokul_forget",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L8",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -60691,7 +60630,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L81",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -60702,7 +60641,183 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/master/WORKLOG.md",
-      "source_location": "L96",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_platform_order_from_ideas_md_9",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L192",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_architecture_agreed_2026_10_31",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L201",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_gmobilize_hub_design_proposed_2026_10_31_stack_not_final",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L212",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_process_decided_2026_10_31",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_findings_bestportofolio_read_only_2026_10_31",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_agreed_order",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L265",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_open_questions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L272",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_session_log",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L279",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_reminders_claude_raise_these_in_the_planning_chat_do_not_let_gokul_forget",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_runbook_one_step_at_a_time_gokul_asks_what_next_claude_answers_from_here",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_commit_push_everything_gitmd_claude_slash_command",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_resume_here_verified_read_only_on_2026_11_14_by_the_planning_chat_repo_logs_were_read_builds_ci_not_re_run",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_cleanup_scan_cleanscan_claude_slash_command",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_why_everything_is_logged_gokul_2026_10_31",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_working_agreement",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_master_worklog_worklog",
+      "target": "docs_master_worklog_repos_all_under_users_gokulsaraswat_vc_documents_project",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/master/WORKLOG.md",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -84133,5 +84248,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "aaaae860c9260c263dadb96c4c4bd30a376e6b50"
+  "built_at_commit": "4151fb8a66850035ee5935a78a064251864ad69b"
 }

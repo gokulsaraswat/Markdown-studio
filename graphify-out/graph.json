@@ -19249,6 +19249,18 @@
       "source_location": "L79"
     },
     {
+      "id": "claude_context",
+      "label": "Context",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "highlight.min.js",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "context",
+      "source_file": "CLAUDE.md",
+      "source_location": "L108"
+    },
+    {
       "id": "claude_engineering_guardrails",
       "label": "\ud83d\udcd0 Engineering Guardrails",
       "_origin": "ast",
@@ -24158,6 +24170,114 @@
       "norm_label": "planning chat: resume prompt",
       "source_file": "docs/master/PLANNING-CHAT-PROMPT.md",
       "source_location": "L3"
+    },
+    {
+      "id": "docs_context",
+      "label": "CONTEXT.md",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "context.md",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_context_context_read_this_first_in_every_new_session",
+      "label": "CONTEXT: read this first in every new session",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "context: read this first in every new session",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_context_future_changes_expect_these_do_not_block_them",
+      "label": "Future changes (expect these; do not block them)",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "future changes (expect these; do not block them)",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L31"
+    },
+    {
+      "id": "docs_context_how_repos_interact_the_contracts",
+      "label": "How repos interact (the contracts)",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how repos interact (the contracts)",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L20"
+    },
+    {
+      "id": "docs_context_repo_map",
+      "label": "Repo map",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "repo map",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L8"
+    },
+    {
+      "id": "docs_context_this_repo_markdown_studio",
+      "label": "This repo: Markdown-studio",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "this repo: markdown-studio",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L41"
+    },
+    {
+      "id": "docs_context_vision",
+      "label": "Vision",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "vision",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "docs_context_work_modes_ask_gokul_which_one_if_unclear",
+      "label": "Work modes (ask Gokul which one if unclear)",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "work modes (ask gokul which one if unclear)",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L27"
+    },
+    {
+      "id": "docs_context_working_rules",
+      "label": "Working rules",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "CONTEXT: read this first in every new session",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "working rules",
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L35"
     }
   ],
   "links": [
@@ -60173,6 +60293,17 @@
     },
     {
       "source": "claude_system_architecture_co_worker_protocol",
+      "target": "claude_context",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_system_architecture_co_worker_protocol",
       "target": "claude_frontend_architecture_ui_ux_motion_standard",
       "relation": "contains",
       "_origin": "ast",
@@ -60246,6 +60377,94 @@
       "confidence_score": 1.0,
       "source_file": "COLLABORATORS.md",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_context",
+      "target": "docs_context_context_read_this_first_in_every_new_session",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_context_context_read_this_first_in_every_new_session",
+      "target": "docs_context_how_repos_interact_the_contracts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_context_context_read_this_first_in_every_new_session",
+      "target": "docs_context_work_modes_ask_gokul_which_one_if_unclear",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_context_context_read_this_first_in_every_new_session",
+      "target": "docs_context_future_changes_expect_these_do_not_block_them",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_context_context_read_this_first_in_every_new_session",
+      "target": "docs_context_working_rules",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_context_context_read_this_first_in_every_new_session",
+      "target": "docs_context_this_repo_markdown_studio",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_context_context_read_this_first_in_every_new_session",
+      "target": "docs_context_vision",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_context_context_read_this_first_in_every_new_session",
+      "target": "docs_context_repo_map",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/CONTEXT.md",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -84248,5 +84467,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4151fb8a66850035ee5935a78a064251864ad69b"
+  "built_at_commit": "2b3837504b0911f649eb14e9d5acbd55a2ac9544"
 }
