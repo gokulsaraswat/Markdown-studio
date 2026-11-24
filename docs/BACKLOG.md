@@ -27,4 +27,5 @@ Status: open, doing, blocked, done, dropped. Cross-repo: `needs:` waits on, `blo
 ## Done (recent)
 | ID | Title | Commit | Date |
 |---|---|---|---|
-| MDS-D-001 | Replace duplicated docs/master, docs/project, WORKLOG-PROJECT.md with docs/PLATFORM-DOCS.md; fix CLAUDE.md tracking rule | (this commit) | 2026-11-25 |
+| MDS-I-001 | Scripted behaviour walk tests/smoke/walk.mjs + baseline fingerprint (48 steps) | (this commit) | 2026-11-25 |
+| MDS-D-001 | Replace duplicated docs/master, docs/project, WORKLOG-PROJECT.md with docs/PLATFORM-DOCS.md; fix CLAUDE.md tracking rule | 82d9c77 | 2026-11-25 |

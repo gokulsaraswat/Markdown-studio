@@ -11,6 +11,11 @@ https://gokulsaraswat.github.io/Markdown-studio/. Upgrade run phase A (inventory
   stale copies of platform/docs); added `docs/PLATFORM-DOCS.md` pointer; CLAUDE.md tracking rule now points to
   platform/docs/WORKLOG.md and keeps PRIVATE-*.md at the workspace root only.
 
+- 2026-11-25 smoke: `tests/smoke/walk.mjs` (puppeteer-core from a scratch dir, not a dependency) walks boot, edit +
+  preview, every keyboard shortcut, slash menu, file keys (pickers stubbed), TXT/HTML/DOCX/PDF export, copy,
+  backup export/import/restore, theme, reload persistence, manifest, offline reload. 48/48 ok, 0 console errors;
+  `tests/smoke/baseline.fingerprint.json` is the timing-free baseline (two runs identical).
+
 ## In progress / next
 - Phase A: docs/ARCHITECTURE.md, docs/FEATURES.md (inventory + shortcut list + baseline numbers), smoke walk.
 

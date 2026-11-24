@@ -1,0 +1,639 @@
+{
+  "steps": {
+    "boot": true,
+    "boot.sampleLoaded": true,
+    "edit.preview": true,
+    "key.Ctrl+P": true,
+    "key.Escape.palette": true,
+    "key.F1": true,
+    "key.Escape.shortcuts": true,
+    "key.Ctrl+Comma": true,
+    "key.Escape.settings(observed)": true,
+    "key.Ctrl+/": true,
+    "key.Escape.zen": true,
+    "key.Ctrl+.": true,
+    "key.Ctrl+..off": true,
+    "key.Ctrl+Shift+O": true,
+    "key.Ctrl+Shift+R": true,
+    "key.Ctrl+Alt+S": true,
+    "key.Escape.sidebar": true,
+    "key.Ctrl+F": true,
+    "key.Escape.find": true,
+    "key.Ctrl+B": true,
+    "key.Ctrl+Z": true,
+    "key.Ctrl+Y": true,
+    "key.Ctrl+Shift+Z": true,
+    "key.Ctrl+I": true,
+    "key.Ctrl+K": true,
+    "key.Tab": true,
+    "key.Shift+Tab": true,
+    "key.Alt+Shift+T": true,
+    "key.Alt+Shift+P": true,
+    "key.Alt+Shift+S": true,
+    "key.Alt+Shift+G": true,
+    "slash.open": true,
+    "slash.escape": true,
+    "slash.enterInserts": true,
+    "key.Ctrl+S/Ctrl+Shift+S/Ctrl+O": true,
+    "key.Ctrl+N": true,
+    "export.txt": true,
+    "export.html": true,
+    "export.docx": true,
+    "export.pdf(window.open)": true,
+    "copy.markdown": true,
+    "backup.export": true,
+    "backup.import": true,
+    "backup.restoreBrowser": true,
+    "theme.toggle": true,
+    "persist.reload": true,
+    "install.manifest": true,
+    "offline.reload": true
+  },
+  "observed": {
+    "boot.sampleLoaded": {
+      "mdLen": 1840
+    },
+    "edit.preview": {
+      "h1": "Walk heading",
+      "strong": true,
+      "code": true,
+      "hljs": true,
+      "table": true,
+      "task": true
+    },
+    "key.Ctrl+P": {
+      "commandPaletteOpen": true
+    },
+    "key.Escape.palette": {
+      "commandPaletteOpen": false
+    },
+    "key.F1": {
+      "shortcutsOpen": true
+    },
+    "key.Escape.shortcuts": {
+      "shortcutsOpen": false
+    },
+    "key.Ctrl+Comma": {
+      "settingsOpen": true
+    },
+    "key.Escape.settings(observed)": {
+      "settingsOpen": true
+    },
+    "key.Ctrl+/": {
+      "zenMode": true
+    },
+    "key.Escape.zen": {
+      "zenMode": false
+    },
+    "key.Ctrl+.": {
+      "focusMode": true
+    },
+    "key.Ctrl+..off": {
+      "focusMode": false
+    },
+    "key.Ctrl+Shift+O": {
+      "utilitySidebarOpen": true,
+      "utilitySidebarTab": "outline"
+    },
+    "key.Ctrl+Shift+R": {
+      "utilitySidebarOpen": true,
+      "utilitySidebarTab": "recent"
+    },
+    "key.Ctrl+Alt+S": {
+      "utilitySidebarOpen": true,
+      "utilitySidebarTab": "stats"
+    },
+    "key.Escape.sidebar": {
+      "utilitySidebarOpen": false
+    },
+    "key.Ctrl+F": {
+      "findOpen": true
+    },
+    "key.Escape.find": {
+      "findOpen": false
+    },
+    "key.Ctrl+B": {
+      "tail": "2 |\n\n**word**\n"
+    },
+    "key.Ctrl+Z": {
+      "tail": "1 | 2 |\n\nword\n"
+    },
+    "key.Ctrl+Y": {
+      "tail": "2 |\n\n**word**\n"
+    },
+    "key.Ctrl+Shift+Z": {
+      "tail": "2 |\n\n**word**\n"
+    },
+    "key.Ctrl+I": {
+      "tail": "| 2 |\n\n*word*\n"
+    },
+    "key.Ctrl+K": {
+      "tail": "d](https://example.com)\n",
+      "dialog": null
+    },
+    "key.Tab": {
+      "tail": "\"|\\n\\n  word\\n\""
+    },
+    "key.Shift+Tab": {
+      "tail": "\"2 |\\n\\nword\\n\""
+    },
+    "key.Alt+Shift+T": {
+      "typewriterMode": true
+    },
+    "key.Alt+Shift+P": {
+      "focusParagraphMode": true
+    },
+    "key.Alt+Shift+S": {
+      "spellcheckEnabled": false
+    },
+    "key.Alt+Shift+G": {
+      "wordGoal": 500
+    },
+    "slash.open": {
+      "slashMenuOpen": true
+    },
+    "slash.escape": {
+      "slashMenuOpen": false
+    },
+    "slash.enterInserts": {
+      "added": 3
+    },
+    "key.Ctrl+S/Ctrl+Shift+S/Ctrl+O": {
+      "pickers": [
+        "save",
+        "save",
+        "open"
+      ],
+      "dialogs": [
+        "prompt",
+        "confirm"
+      ]
+    },
+    "key.Ctrl+N": {
+      "mdLen": 33,
+      "mdHash": "125bd44cd4e0",
+      "fileName": "untitled.md",
+      "dirty": false
+    },
+    "export.txt": [
+      {
+        "name": "untitled.txt",
+        "size": 72,
+        "head": "57616c6b",
+        "hasHeading": true
+      }
+    ],
+    "export.html": [
+      {
+        "name": "untitled.html",
+        "size": 4975,
+        "head": "3c21444f",
+        "hasHeading": true
+      }
+    ],
+    "export.docx": [
+      {
+        "name": "untitled.docx",
+        "size": 9040,
+        "head": "504b0304",
+        "hasHeading": null
+      }
+    ],
+    "export.pdf(window.open)": {
+      "opened": 1
+    },
+    "copy.markdown": {
+      "len": 133,
+      "note": "Windows clipboard uses CRLF"
+    },
+    "backup.import": {
+      "mdLen": 118
+    },
+    "backup.restoreBrowser": {
+      "mdLen": 118
+    },
+    "theme.toggle": {
+      "from": "dark",
+      "to": "light",
+      "htmlDark": false
+    },
+    "persist.reload": {
+      "mdLen": 118
+    }
+  },
+  "commands": [
+    {
+      "id": "new",
+      "group": "File",
+      "title": "New document",
+      "shortcut": "Ctrl/Cmd + N"
+    },
+    {
+      "id": "open",
+      "group": "File",
+      "title": "Open document",
+      "shortcut": "Ctrl/Cmd + O"
+    },
+    {
+      "id": "save",
+      "group": "File",
+      "title": "Save document",
+      "shortcut": "Ctrl/Cmd + S"
+    },
+    {
+      "id": "saveAs",
+      "group": "File",
+      "title": "Save As",
+      "shortcut": "Ctrl/Cmd + Shift + S"
+    },
+    {
+      "id": "exportTxt",
+      "group": "Export",
+      "title": "Export TXT",
+      "shortcut": ""
+    },
+    {
+      "id": "exportHtml",
+      "group": "Export",
+      "title": "Export HTML",
+      "shortcut": ""
+    },
+    {
+      "id": "exportPdf",
+      "group": "Export",
+      "title": "Export PDF",
+      "shortcut": ""
+    },
+    {
+      "id": "exportDocx",
+      "group": "Export",
+      "title": "Export DOCX",
+      "shortcut": ""
+    },
+    {
+      "id": "togglePreview",
+      "group": "View",
+      "title": "Hide preview",
+      "shortcut": ""
+    },
+    {
+      "id": "toggleZen",
+      "group": "View",
+      "title": "Enable zen mode",
+      "shortcut": "Ctrl/Cmd + /"
+    },
+    {
+      "id": "toggleFocus",
+      "group": "View",
+      "title": "Enable focus mode",
+      "shortcut": "Ctrl/Cmd + ."
+    },
+    {
+      "id": "outline",
+      "group": "Sidebar",
+      "title": "Open outline",
+      "shortcut": "Ctrl/Cmd + Shift + O"
+    },
+    {
+      "id": "stats",
+      "group": "Sidebar",
+      "title": "Open document stats",
+      "shortcut": "Ctrl/Cmd + Alt + S"
+    },
+    {
+      "id": "recent",
+      "group": "Sidebar",
+      "title": "Open recent local sessions",
+      "shortcut": "Ctrl/Cmd + Shift + R"
+    },
+    {
+      "id": "find",
+      "group": "Tools",
+      "title": "Find and replace",
+      "shortcut": "Ctrl/Cmd + F"
+    },
+    {
+      "id": "shortcuts",
+      "group": "Tools",
+      "title": "Show keyboard shortcuts",
+      "shortcut": "F1"
+    },
+    {
+      "id": "copyMd",
+      "group": "Tools",
+      "title": "Copy markdown source",
+      "shortcut": ""
+    },
+    {
+      "id": "copyHtml",
+      "group": "Tools",
+      "title": "Copy rendered HTML",
+      "shortcut": ""
+    },
+    {
+      "id": "top",
+      "group": "Navigate",
+      "title": "Jump to top",
+      "shortcut": ""
+    },
+    {
+      "id": "bottom",
+      "group": "Navigate",
+      "title": "Jump to bottom",
+      "shortcut": ""
+    },
+    {
+      "id": "themeToggle",
+      "group": "Theme",
+      "title": "Switch to light theme",
+      "shortcut": ""
+    },
+    {
+      "id": "presetSky",
+      "group": "Theme",
+      "title": "Accent preset: Sky blue",
+      "shortcut": ""
+    },
+    {
+      "id": "presetViolet",
+      "group": "Theme",
+      "title": "Accent preset: Violet",
+      "shortcut": ""
+    },
+    {
+      "id": "presetEmerald",
+      "group": "Theme",
+      "title": "Accent preset: Emerald",
+      "shortcut": ""
+    },
+    {
+      "id": "settings",
+      "group": "Tools",
+      "title": "Open workspace settings",
+      "shortcut": "Ctrl/Cmd + ,"
+    },
+    {
+      "id": "guide",
+      "group": "Tools",
+      "title": "Open quick start guide",
+      "shortcut": ""
+    },
+    {
+      "id": "updates",
+      "group": "Tools",
+      "title": "Open release notes",
+      "shortcut": ""
+    },
+    {
+      "id": "copyShortcuts",
+      "group": "Tools",
+      "title": "Copy shortcut cheat sheet",
+      "shortcut": ""
+    },
+    {
+      "id": "copyReleaseNotes",
+      "group": "Tools",
+      "title": "Copy release notes summary",
+      "shortcut": ""
+    },
+    {
+      "id": "templates",
+      "group": "Tools",
+      "title": "Open templates",
+      "shortcut": ""
+    },
+    {
+      "id": "resetWorkspace",
+      "group": "Tools",
+      "title": "Reset workspace preferences",
+      "shortcut": ""
+    },
+    {
+      "id": "patch6-doc-info",
+      "group": "View",
+      "title": "Open document details",
+      "shortcut": ""
+    },
+    {
+      "id": "patch6-split-editor-first",
+      "group": "View",
+      "title": "Use editor-first split",
+      "shortcut": ""
+    },
+    {
+      "id": "patch6-split-balanced",
+      "group": "View",
+      "title": "Use balanced split",
+      "shortcut": ""
+    },
+    {
+      "id": "patch6-split-review",
+      "group": "View",
+      "title": "Use review split",
+      "shortcut": ""
+    },
+    {
+      "id": "patch7-slash",
+      "group": "Writing",
+      "title": "Open slash commands",
+      "shortcut": ""
+    },
+    {
+      "id": "patch7-typewriter",
+      "group": "Writing",
+      "title": "Enable typewriter mode",
+      "shortcut": ""
+    },
+    {
+      "id": "patch7-focus-paragraph",
+      "group": "Writing",
+      "title": "Enable paragraph focus",
+      "shortcut": ""
+    },
+    {
+      "id": "patch7-spellcheck",
+      "group": "Writing",
+      "title": "Disable spellcheck",
+      "shortcut": ""
+    },
+    {
+      "id": "patch7-word-goal",
+      "group": "Writing",
+      "title": "Set word goal",
+      "shortcut": ""
+    },
+    {
+      "id": "patch7-clear-goal",
+      "group": "Writing",
+      "title": "Clear word goal",
+      "shortcut": ""
+    },
+    {
+      "id": "patch7-snippet-checklist",
+      "group": "Insert",
+      "title": "Insert checklist snippet",
+      "shortcut": ""
+    },
+    {
+      "id": "patch7-snippet-meeting",
+      "group": "Insert",
+      "title": "Insert meeting notes snippet",
+      "shortcut": ""
+    },
+    {
+      "id": "appSetup",
+      "group": "Workspace",
+      "title": "Open app setup",
+      "shortcut": ""
+    },
+    {
+      "id": "exportWorkspaceBackup",
+      "group": "Workspace",
+      "title": "Export workspace backup",
+      "shortcut": ""
+    },
+    {
+      "id": "importWorkspaceBackup",
+      "group": "Workspace",
+      "title": "Import workspace backup",
+      "shortcut": ""
+    },
+    {
+      "id": "restoreBrowserBackup",
+      "group": "Workspace",
+      "title": "Restore browser backup",
+      "shortcut": ""
+    },
+    {
+      "id": "requestPersistentStorage",
+      "group": "Workspace",
+      "title": "Request persistent storage",
+      "shortcut": ""
+    },
+    {
+      "id": "installApp",
+      "group": "Workspace",
+      "title": "Install app",
+      "shortcut": ""
+    }
+  ],
+  "slash": [
+    {
+      "id": "heading1",
+      "title": "Heading 1"
+    },
+    {
+      "id": "heading2",
+      "title": "Heading 2"
+    },
+    {
+      "id": "bullet",
+      "title": "Bullet list"
+    },
+    {
+      "id": "task",
+      "title": "Task list"
+    },
+    {
+      "id": "quote",
+      "title": "Quote"
+    },
+    {
+      "id": "checklist",
+      "title": "Checklist snippet"
+    },
+    {
+      "id": "meeting",
+      "title": "Meeting notes"
+    },
+    {
+      "id": "review",
+      "title": "Review summary"
+    },
+    {
+      "id": "code",
+      "title": "Code block"
+    },
+    {
+      "id": "table",
+      "title": "Table"
+    },
+    {
+      "id": "image",
+      "title": "Image"
+    },
+    {
+      "id": "gif",
+      "title": "GIF"
+    },
+    {
+      "id": "callout",
+      "title": "Callout"
+    },
+    {
+      "id": "datetime",
+      "title": "Date / time"
+    }
+  ],
+  "shortcutsSheet": [
+    "Ctrl/Cmd + N",
+    "Ctrl/Cmd + O",
+    "Ctrl/Cmd + S",
+    "Ctrl/Cmd + Shift + S",
+    "Ctrl/Cmd + P",
+    "Ctrl/Cmd + ,",
+    "Ctrl/Cmd + B",
+    "Ctrl/Cmd + I",
+    "Ctrl/Cmd + K",
+    "Ctrl/Cmd + F",
+    "Tab",
+    "Shift + Tab",
+    "Ctrl/Cmd + /",
+    "Ctrl/Cmd + .",
+    "Ctrl/Cmd + Shift + O",
+    "Ctrl/Cmd + Alt + S",
+    "Ctrl/Cmd + Shift + R",
+    "Double-click divider",
+    "↑ / ↓",
+    "Enter",
+    "F1",
+    "Esc",
+    "Type /",
+    "Alt + Shift + T",
+    "Alt + Shift + P",
+    "Alt + Shift + S",
+    "Alt + Shift + G",
+    "Ctrl/Cmd + V"
+  ],
+  "downloads": [
+    {
+      "name": "untitled.txt",
+      "head": "57616c6b",
+      "hasHeading": true
+    },
+    {
+      "name": "untitled.html",
+      "head": "3c21444f",
+      "hasHeading": true
+    },
+    {
+      "name": "untitled.docx",
+      "head": "504b0304",
+      "hasHeading": null
+    }
+  ],
+  "dialogs": [
+    {
+      "type": "prompt",
+      "message": "Set a word goal (enter 0 to clear it):"
+    },
+    {
+      "type": "confirm",
+      "message": "Discard unsaved changes and continue?"
+    },
+    {
+      "type": "confirm",
+      "message": "Discard unsaved changes and continue?"
+    }
+  ]
+}
