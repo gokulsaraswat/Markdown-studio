@@ -1,18 +1,26 @@
 # WORKLOG: Markdown-studio
 
-Master status of all repos: platform/docs/WORKLOG.md. Update this file after every step.
+Master status of all repos: platform/docs/WORKLOG.md (see docs/PLATFORM-DOCS.md). Update this file after every step.
 
 ## Current state
-TO BE UPDATED: first agent run fills this in (build/run status, what exists).
+Static vanilla JS app (React 16 UMD, no build step) deployed from `main` root to GitHub Pages:
+https://gokulsaraswat.github.io/Markdown-studio/. Upgrade run phase A (inventory) in progress.
 
 ## Done
-- (nothing logged yet)
+- 2026-11-25 kit fix: removed duplicated `docs/master/`, `docs/project/`, `WORKLOG-PROJECT.md` (23 tracked files,
+  stale copies of platform/docs); added `docs/PLATFORM-DOCS.md` pointer; CLAUDE.md tracking rule now points to
+  platform/docs/WORKLOG.md and keeps PRIVATE-*.md at the workspace root only.
 
 ## In progress / next
-- Bring repo up to the repo kit (platform/docs/REPO-KIT.md). See docs/KICKOFF-PROMPT.md.
+- Phase A: docs/ARCHITECTURE.md, docs/FEATURES.md (inventory + shortcut list + baseline numbers), smoke walk.
 
 ## Blockers / requests to other repos
-- none logged
+- platform: `platform/docs/CONTEXT.md` line 36 still says "then `docs/master/WORKLOG.md` if present". This repo's copy
+  now points to `platform/docs/WORKLOG.md` via docs/PLATFORM-DOCS.md; update the master so sync-kit does not revert it.
+
+## Assumptions
+- `docs/CONTEXT.md` is a synced copy, but its `docs/master/` pointer would dangle after the kit fix, so it was updated
+  here (one line) and a request was logged for platform.
 
 ## Reminders
-- TO BE UPDATED: scope of this repo is not final; see docs/KICKOFF-PROMPT.md "Questions to ask me first".
+- Scope of this repo is not final; see docs/KICKOFF-PROMPT.md "Questions to ask me first".
