@@ -78,9 +78,9 @@
     "semantic_hash": ""
   },
   ".project-architecture.md": {
-    "mtime": 1793440140.8641057,
-    "seen": 1793440142.965788,
-    "ast_hash": "bcee6447da87d5e77a84727b24cb1758",
+    "mtime": 1793460308.93172,
+    "seen": 1793460315.303194,
+    "ast_hash": "9e954a17d1bbb01753cb03696f6649b3",
     "semantic_hash": ""
   },
   ".prompts.md": {
@@ -477,6 +477,54 @@
     "mtime": 1793115027.0849512,
     "seen": 1793115642.485921,
     "ast_hash": "ddb26a8bfad49f853eeb4da3b429f071",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1793448175.1581109,
+    "seen": 1793460315.3031979,
+    "ast_hash": "82100c73a3edc01aed74a6fa897322ec",
+    "semantic_hash": ""
+  },
+  "COLLABORATORS.md": {
+    "mtime": 1793448175.158526,
+    "seen": 1793460315.303201,
+    "ast_hash": "2016b08c23abc03fc92dcf9cec6dec6c",
+    "semantic_hash": ""
+  },
+  "WORKLOG.md": {
+    "mtime": 1793448175.157032,
+    "seen": 1793460315.3032079,
+    "ast_hash": "0fdec2708a7d774c20377afb14cba4e4",
+    "semantic_hash": ""
+  },
+  "docs/KICKOFF-PROMPT.md": {
+    "mtime": 1793456332.560675,
+    "seen": 1793460315.303209,
+    "ast_hash": "03901a2ea408abb22d73db4c3b662c30",
+    "semantic_hash": ""
+  },
+  "docs/master/PLANNING-CHAT-PROMPT.md": {
+    "mtime": 1793454046.3570998,
+    "seen": 1793460315.30321,
+    "ast_hash": "5821d9afb394931392d2754b92801e3b",
+    "semantic_hash": ""
+  },
+  "docs/master/PROMPTS.md": {
+    "mtime": 1793456332.5615003,
+    "seen": 1793460315.303211,
+    "ast_hash": "c64902a87705b2129a77559649421539",
+    "semantic_hash": ""
+  },
+  "docs/master/REPO-KIT.md": {
+    "mtime": 1793454046.360032,
+    "seen": 1793460315.303212,
+    "ast_hash": "12c9942bd5696d13be07e51615b81afa",
+    "semantic_hash": ""
+  },
+  "docs/master/WORKLOG.md": {
+    "mtime": 1793457855.3074603,
+    "seen": 1793460315.3032131,
+    "ast_hash": "1f450ae872bfd18870c92df1fc1d6b36",
     "semantic_hash": ""
   }
 }

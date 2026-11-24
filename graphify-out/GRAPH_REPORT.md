@@ -1,17 +1,17 @@
-# Graph Report - Markdown-studio  (2026-10-27)
+# Graph Report - Markdown-studio  (2026-10-31)
 
 ## Corpus Check
-- 47 files · ~215,238 words
+- 55 files · ~224,143 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 13 file(s) not represented in the graph (top: .css 7, (none) 2, .webmanifest 2)
+- Unclassified: 14 file(s) not represented in the graph (top: .css 7, (none) 3, .webmanifest 2)
 
 ## Summary
-- 1943 nodes · 5097 edges · 83 communities (77 shown, 6 thin omitted)
+- 2006 nodes · 5152 edges · 91 communities (82 shown, 9 thin omitted)
 - Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 370 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0389289c`
+- Built from commit: `aaaae860`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -99,6 +99,14 @@
 - run-local.sh
 - Markdown-studio/service-worker.js
 - THIRD_PARTY_NOTICES.md
+- WORKLOG
+- REPO SECTIONS
+- WORKLOG: Markdown-studio
+- Kickoff prompt: Markdown-studio
+- Repo Kit (every repo must have these)
+- AGENTS.md
+- COLLABORATORS.md
+- PLANNING-CHAT-PROMPT.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `MarkdownStudioApp()` - 222 edges
@@ -123,7 +131,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (83 total, 6 thin omitted)
+## Communities (91 total, 9 thin omitted)
 
 ### Community 0 - "markdown_editor_pro_patch9_files/js/app.js"
 Cohesion: 0.07
@@ -433,24 +441,44 @@ Nodes (4): 1. High-Level Design (HLD) Topology, 2. Current Target Directory Tree
 Cohesion: 0.70
 Nodes (3): edge(), node(), sync-architecture.sh script
 
+### Community 83 - "WORKLOG"
+Cohesion: 0.08
+Nodes (23): Agreed order, Architecture (agreed 2026-10-31), Cleanup scan: `/cleanscan` (Claude slash command), Commit + push everything: `/gitmd` (Claude slash command), Current focus, Decisions, Dropped, Far later (+15 more)
+
+### Community 84 - "REPO SECTIONS"
+Cohesion: 0.14
+Nodes (13): 1. platform (first), 2. admin, 3. gokulmobilize, 4. bestportofolio, 5. Progress (GSpace), 6. Markdown-studio  (TO BE UPDATED: scope still open, revisit after the first 5 repos), 7. checkers-gym-management  (TO BE UPDATED: scope still open, revisit after admin works), 8. gokul-omni-converter  (TO BE UPDATED: standalone, not part of the web platform) (+5 more)
+
+### Community 85 - "WORKLOG: Markdown-studio"
+Cohesion: 0.29
+Nodes (6): Blockers / requests to other repos, Current state, Done, In progress / next, Reminders, WORKLOG: Markdown-studio
+
+### Community 86 - "Kickoff prompt: Markdown-studio"
+Cohesion: 0.33
+Nodes (5): 6. Markdown-studio  (TO BE UPDATED: scope still open, revisit after the first 5 repos), COLLABORATOR ADD-ON, Kickoff prompt: Markdown-studio, REPO SECTION, SHARED BLOCK
+
+### Community 87 - "Repo Kit (every repo must have these)"
+Cohesion: 0.33
+Nodes (5): Definition of done (any step), Deploy-ready rules (every repo), Master docs (live in `platform/docs/`), Repo Kit (every repo must have these), Shared constants (from `@gokulsaraswat/ui`, same on every app)
+
 ## Knowledge Gaps
-- **262 isolated node(s):** `APP_SHELL`, `run-local.sh script`, `APP_SHELL`, `RFC-3986`, `1. High-Level Design (HLD) Topology` (+257 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 463 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **309 isolated node(s):** `1. High-Level Design (HLD) Topology`, `2. Current Target Directory Tree`, `3. Low-Level Design (LLD) & SOLID Class Schemas`, `AGENTS.md: Markdown-studio`, `COLLABORATORS: Markdown-studio` (+304 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 518 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `.render`, `maybePreventDefault`, `.renderToolbarDropdown`, `markdown_editor_pro_patch8_files/js/app.js`, `clamp`, `.showToast`, `.updateMarkdown`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `.renderVersionsModal`, `.renderEditorPane`, `Patch 7/js/app.js`, `.renderToolbarDropdown`, `.showToast`, `.render`, `.componentDidMount`?**
+- **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `Markdown-studio/js/app.js`, `.renderVersionsModal`, `.renderDocumentPopover`, `.patch7InsertQuickSnippetAtRange`, `.renderToolbarDropdown`, `.showToast`, `.exportWorkspaceBackup`, `.componentDidMount`, `.handleExportDocx`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `markdown_editor_pro_patch9_files/js/app.js`, `.renderVersionsModal`, `.renderDocumentPopover`, `.patch7InsertQuickSnippetAtRange`, `.renderToolbarDropdown`, `.exportWorkspaceBackup`, `.showToast`, `.componentDidMount`, `.handleExportDocx`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Why does `MarkdownStudioApp()` connect `MarkdownStudioApp` to `.render`, `maybePreventDefault`, `.renderToolbarDropdown`, `markdown_editor_pro_patch8_files/js/app.js`, `clamp`, `.showToast`, `.updateMarkdown`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **Are the 24 inferred relationships involving `Nb()` (e.g. with `react-dom.production.min.js` and `ab()`) actually correct?**
   _`Nb()` has 24 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `APP_SHELL`, `run-local.sh script`, `APP_SHELL` to the rest of the system?**
-  _262 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `1. High-Level Design (HLD) Topology`, `2. Current Target Directory Tree`, `3. Low-Level Design (LLD) & SOLID Class Schemas` to the rest of the system?**
+  _309 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `markdown_editor_pro_patch9_files/js/app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.06558558558558558 - nodes in this community are weakly interconnected._
 - **Should `Markdown-studio/js/app.js` be split into smaller, more focused modules?**
