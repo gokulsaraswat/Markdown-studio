@@ -7,9 +7,6 @@ Status: open, doing, blocked, done, dropped. Cross-repo: `needs:` waits on, `blo
 ## Bugs
 | ID | Title | Pri | Status | Needs/Blocks | Notes (where, repro, evidence) |
 |---|---|---|---|---|---|
-| MDS-B-002 | a11y: preview task-list checkboxes have no accessible label | P2 | open | | Lighthouse `label`, `article.preview-sheet > ul > li > input` |
-| MDS-B-003 | a11y: `hljs-keyword` colour fails contrast in preview code | P2 | open | | Lighthouse `color-contrast`, highlight-light/dark.css |
-| MDS-B-004 | a11y: `.view-segment` has `role=tablist` without `tab` children | P2 | open | | Lighthouse `aria-required-children`, header view switch |
 
 ## Improvements
 | ID | Title | Pri | Status | Needs/Blocks | Notes |
@@ -36,7 +33,10 @@ Status: open, doing, blocked, done, dropped. Cross-repo: `needs:` waits on, `blo
 ## Done (recent)
 | ID | Title | Commit | Date |
 |---|---|---|---|
-| MDS-B-001 | Preview XSS fixed: DOMPurify 3.2.6 sanitizes all preview HTML (`sanitizePreviewHtml` in postProcessRenderedHtml); payload test: script, onerror, javascript: link, iframe removed, 0 alerts; walk 48/48 fingerprint identical | (this commit) | 2026-11-25 |
+| MDS-B-002 | a11y: preview task checkboxes get `aria-label="Task: <text>"` (postProcessRenderedHtml); HTML/DOCX exports +24 B, baseline updated for that only | (this commit) | 2026-11-25 |
+| MDS-B-003 | a11y: dark `hljs-keyword` #f92672 (3.7:1 on #282c34) -> #ff7aa8 (~5.7:1); light #a626a4 already 5.86:1 | (this commit) | 2026-11-25 |
+| MDS-B-004 | a11y: view switch `role=tablist` -> `role=group` + `aria-pressed` on each button (toggle semantics, same look) | (this commit) | 2026-11-25 |
+| MDS-B-001 | Preview XSS fixed: DOMPurify 3.2.6 sanitizes all preview HTML (`sanitizePreviewHtml` in postProcessRenderedHtml); payload test: script, onerror, javascript: link, iframe removed, 0 alerts; walk 48/48 fingerprint identical | 98d7541 | 2026-11-25 |
 | MDS-I-004 | docs/FEATURES.md inventory (routes, features, 49 commands, 14 slash items, all shortcuts) + baseline numbers | a1f5ba4 | 2026-11-25 |
 | MDS-F-002 | Optional Google/GitHub sign-in (shared contract, app `studio`): js/auth.js, supabase-config.js, styles/auth.css, vendor/supabase.js; walk fingerprint unchanged | 3206216 | 2026-11-25 |
 | MDS-D-002 | Add docs/ARCHITECTURE.md (only what exists) | 660662e | 2026-11-25 |

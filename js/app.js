@@ -635,6 +635,11 @@
           firstParagraph.parentNode.removeChild(firstParagraph);
         }
       }
+      var taskBoxes = doc.querySelectorAll('li > input[type="checkbox"]');
+      for (var t = 0; t < taskBoxes.length; t += 1) {
+        var taskText = (taskBoxes[t].parentNode.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 120);
+        taskBoxes[t].setAttribute('aria-label', taskText ? 'Task: ' + taskText : 'Task');
+      }
       return sanitizePreviewHtml(doc.body.innerHTML);
     } catch (error) {
       console.warn('Unable to post-process rendered markdown.', error);
@@ -7505,6 +7510,7 @@
       type: 'button',
       onClick: props.onClick,
       title: props.title || props.label,
+      'aria-pressed': props.active ? 'true' : 'false',
       className: cx('view-segment__btn', props.active ? 'is-active' : '')
     }, props.label);
   }
@@ -8027,7 +8033,7 @@
         ])
       ]),
       e('div', { key: 'center', className: 'topbar-center' },
-        e('div', { className: 'view-segment', role: 'tablist', 'aria-label': 'Workspace view mode' }, [
+        e('div', { className: 'view-segment', role: 'group', 'aria-label': 'Workspace view mode' }, [
           e(Patch6SegmentButton, {
             key: 'split',
             label: 'Split',
@@ -10314,7 +10320,7 @@
         ])
       ]),
       e('div', { key: 'center', className: 'topbar-center topbar-center--patch8' },
-        e('div', { className: 'view-segment', role: 'tablist', 'aria-label': 'Workspace view mode' }, [
+        e('div', { className: 'view-segment', role: 'group', 'aria-label': 'Workspace view mode' }, [
           e(Patch6SegmentButton, {
             key: 'split',
             label: 'Split',
@@ -11788,7 +11794,7 @@
         ])
       ]),
       e('div', { key: 'center', className: 'topbar-center topbar-center--patch8' },
-        e('div', { className: 'view-segment', role: 'tablist', 'aria-label': 'Workspace view mode' }, [
+        e('div', { className: 'view-segment', role: 'group', 'aria-label': 'Workspace view mode' }, [
           e(Patch6SegmentButton, {
             key: 'split',
             label: 'Split',
