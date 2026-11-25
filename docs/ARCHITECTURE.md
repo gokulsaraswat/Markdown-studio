@@ -7,7 +7,8 @@ Describes only what exists (2026-11-25). Wishes go to `docs/BACKLOG.md`. Feature
   (https://gokulsaraswat.github.io/Markdown-studio/). Local: `run-local.sh` / `run-local.bat` (`python -m http.server 8080`).
 - Browser globals loaded as classic scripts in `index.html` (order matters): `vendor/react.production.min.js`
   (React 16.0.0), `vendor/react-dom.production.min.js`, `vendor/marked.js` (marked, 2022 build),
-  `vendor/highlight.min.js` (highlight.js 11.0.1), then `js/app.js`.
+  `vendor/highlight.min.js` (highlight.js 11.0.1), then `js/app.js`; deferred after it: `vendor/supabase.js`
+  (supabase-js 2.119.2), `js/supabase-config.js`, `js/auth.js`.
 - Styles: `styles/tailwind.generated.css` (Tailwind v4.1.10 compiled output, committed; no config in repo),
   `styles/app.css` (app styles), `styles/highlight-light.css` / `highlight-dark.css` (swapped via `#hljs-theme`).
 - Inline script in `index.html` applies the saved or system theme (`html.dark`) before first paint.
@@ -18,8 +19,11 @@ Describes only what exists (2026-11-25). Wishes go to `docs/BACKLOG.md`. Feature
 | `index.html` | App shell, `#app` mount, theme bootstrap, script/style order |
 | `404.html` | Redirect to app root (GitHub Pages project path aware) |
 | `manifest.webmanifest` | PWA manifest (standalone, icons 192/512/svg) |
-| `service-worker.js` | Offline shell cache (`CACHE_NAME = markdown-studio-shell-v9`, `APP_SHELL` precache list) |
+| `service-worker.js` | Offline shell cache (`CACHE_NAME = markdown-studio-shell-v10`, `APP_SHELL` precache list; cross-origin requests such as Supabase are not intercepted) |
 | `js/app.js` | Whole app (~512 KB, 11,966 lines), one IIFE |
+| `js/auth.js` | Optional Google/GitHub sign-in (shared platform contract, app `studio`); deferred, mounts into `.topbar-actions`, independent of app state |
+| `js/supabase-config.js` | Supabase project URL + public anon key (RLS-protected client key) |
+| `styles/auth.css` | Sign-in control, chooser, account menu, Connected accounts |
 | `sample.md` | Sample document (precached) |
 | `assets/` | Icons (svg, 192, 512, apple-touch) |
 | `vendor/` | Third-party UMD builds (see THIRD_PARTY_NOTICES.md) |

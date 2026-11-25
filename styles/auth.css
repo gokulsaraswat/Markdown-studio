@@ -1,0 +1,106 @@
+.mds-auth-slot { display: inline-flex; align-items: center; }
+
+.mds-auth-avatar {
+  width: 36px; height: 36px; border-radius: 999px; padding: 0; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border-strong); background: var(--pane-bg); color: var(--text-strong);
+  font-weight: 700; font-size: 14px; cursor: pointer;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms ease;
+}
+.mds-auth-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.mds-auth-avatar:hover { transform: translateY(-1px); box-shadow: var(--shadow-pane); }
+.mds-auth-avatar:focus-visible,
+.mds-auth-provider:focus-visible,
+.mds-auth-close:focus-visible,
+.mds-auth-menu button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.mds-auth-backdrop {
+  position: fixed; inset: 0; z-index: 90;
+  display: flex; align-items: center; justify-content: center; padding: 16px;
+  background: rgba(15, 23, 42, 0.38);
+  opacity: 0; transition: opacity 200ms ease;
+}
+.mds-auth-backdrop.is-open { opacity: 1; }
+.mds-auth-dialog {
+  width: min(420px, 100%); max-height: calc(100dvh - 32px); overflow: auto;
+  border-radius: 22px; border: 1px solid var(--border-soft);
+  background: var(--pane-bg); color: var(--text-base); box-shadow: var(--shadow-app);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  transform: translateY(12px) scale(0.98); transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mds-auth-backdrop.is-open .mds-auth-dialog { transform: none; }
+.mds-auth-dialog__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 20px 20px 8px; }
+.mds-auth-dialog__head h2 { margin: 0; font-size: 17px; font-weight: 700; color: var(--text-strong); }
+.mds-auth-dialog__head p { margin: 4px 0 0; font-size: 13px; color: var(--text-muted); line-height: 1.45; }
+.mds-auth-dialog__body { padding: 8px 20px 20px; }
+.mds-auth-close {
+  width: 32px; height: 32px; border-radius: 999px; border: 0; cursor: pointer; flex-shrink: 0;
+  background: var(--pane-muted); color: var(--text-muted); font-size: 20px; line-height: 1;
+}
+.mds-auth-close:hover { color: var(--text-strong); }
+
+.mds-auth-providers { display: flex; flex-direction: column; gap: 10px; }
+.mds-auth-provider {
+  min-height: 46px; display: flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 14px; border: 1px solid var(--border-strong); cursor: pointer;
+  background: var(--preview-bg); color: var(--text-strong); font-size: 14px; font-weight: 600;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms ease;
+}
+.mds-auth-provider:hover { transform: translateY(-1px); box-shadow: var(--shadow-pane); }
+.mds-auth-provider:disabled { opacity: 0.65; cursor: progress; transform: none; }
+.mds-auth-foot { margin: 14px 0 0; font-size: 12px; color: var(--text-muted); line-height: 1.5; text-align: center; }
+
+.mds-auth-menu {
+  position: fixed; z-index: 90; min-width: 240px; max-width: calc(100vw - 24px); padding: 6px;
+  border-radius: 16px; border: 1px solid var(--border-soft);
+  background: var(--pane-bg); box-shadow: var(--shadow-app);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  opacity: 0; transform: translateY(-6px); transition: opacity 150ms ease, transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mds-auth-menu.is-open { opacity: 1; transform: none; }
+.mds-auth-menu__who { display: flex; flex-direction: column; gap: 2px; padding: 10px 10px 12px; border-bottom: 1px solid var(--border-soft); margin-bottom: 4px; }
+.mds-auth-menu__who strong { color: var(--text-strong); font-size: 14px; }
+.mds-auth-menu__who small { color: var(--text-muted); font-size: 12px; overflow-wrap: anywhere; }
+.mds-auth-menu__who .mds-auth-chip { align-self: flex-start; margin-top: 6px; }
+.mds-auth-menu button {
+  width: 100%; min-height: 40px; text-align: left; padding: 8px 10px; border: 0; border-radius: 10px;
+  background: transparent; color: var(--text-base); font-size: 13px; cursor: pointer;
+}
+.mds-auth-menu button:hover { background: var(--pane-muted); color: var(--text-strong); }
+
+.mds-auth-chip {
+  display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 999px;
+  font-size: 11px; font-weight: 600; background: var(--pane-muted); color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+}
+.mds-auth-chip.is-admin, .mds-auth-chip.is-member { color: var(--success); }
+.mds-auth-chip.is-pending, .mds-auth-chip.is-none { color: var(--warning); }
+
+.mds-auth-list { display: flex; flex-direction: column; }
+.mds-auth-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+.mds-auth-row + .mds-auth-row { border-top: 1px solid var(--border-soft); }
+.mds-auth-row__icon {
+  width: 38px; height: 38px; border-radius: 12px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--pane-muted); color: var(--text-strong);
+}
+.mds-auth-row__text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.mds-auth-row__text strong { color: var(--text-strong); font-size: 14px; }
+.mds-auth-row__text small { color: var(--text-muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mds-auth-muted { color: var(--text-muted); font-size: 13px; }
+.mds-auth-error { color: var(--warning); font-size: 13px; }
+
+.mds-auth-notice {
+  position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom)); z-index: 95;
+  max-width: min(480px, calc(100vw - 32px)); padding: 10px 16px; border-radius: 999px;
+  background: var(--pane-bg); color: var(--text-strong); border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-app); font-size: 13px;
+  opacity: 0; transform: translate(-50%, 10px); transition: opacity 200ms ease, transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mds-auth-notice.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.mds-auth-notice.is-error { border-color: var(--warning); }
+.mds-auth-notice.is-success { border-color: var(--success); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mds-auth-avatar, .mds-auth-provider, .mds-auth-dialog, .mds-auth-menu, .mds-auth-backdrop, .mds-auth-notice { transition: none; }
+}

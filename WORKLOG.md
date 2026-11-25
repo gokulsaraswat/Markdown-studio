@@ -20,6 +20,15 @@ https://gokulsaraswat.github.io/Markdown-studio/. Upgrade run phase A (inventory
   Backlog: MDS-B-001 (P1, unsanitized preview HTML executes inline handlers, verified), MDS-B-002..004 (a11y),
   MDS-I-002/003, MDS-F-001, MDS-D-003..005.
 
+- 2026-11-25 sign-in (shared platform contract, app id `studio`): optional Google/GitHub sign-in through Supabase
+  (PKCE). Isolated for the planned refactor: `js/auth.js` (all logic, mounts a control into `.topbar-actions`,
+  no edits to js/app.js), `js/supabase-config.js` (project URL + public anon key, RLS-protected), `styles/auth.css`,
+  `vendor/supabase.js` (supabase-js 2.119.2 UMD). Guests keep everything incl. local save; signed-in menu shows
+  account, access status (request_access('studio') filed once per load), Connected accounts (link/unlink, last one
+  kept), sign out. SW: new files in APP_SHELL, CACHE_NAME v10. Walk 48/48, fingerprint identical; startup +4
+  requests / +245 KB (deferred, after the editor). Needs in Supabase: redirect URLs
+  `https://gokulsaraswat.github.io/Markdown-studio/**` and the local serving origin (e.g. `http://127.0.0.1:8765/**`).
+
 ## In progress / next
 - Phase A: docs/ARCHITECTURE.md, docs/FEATURES.md (inventory + shortcut list + baseline numbers), smoke walk.
 
