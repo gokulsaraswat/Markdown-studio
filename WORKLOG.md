@@ -5,8 +5,13 @@ Master status of all repos: platform/docs/WORKLOG.md (see docs/PLATFORM-DOCS.md)
 ## Current state
 Static vanilla JS app (React 16 UMD, no build step) deployed from `main` root to GitHub Pages:
 https://gokulsaraswat.github.io/Markdown-studio/. Upgrade run phase A (inventory, kit fixes, smoke walk, baseline) done 2026-11-25.
+Markdown Studio program (plan: workspace-root MARKDOWN-STUDIO-PLAN.md): Phase 0 DONE 2026-11-25 (security + a11y).
+Next: Phase 1 = Vite + ES modules + React 19 refactor with an identical walk fingerprint; then CodeMirror 6 (phase 2).
 
 ## Done
+- 2026-11-25 Phase 0: MDS-B-001 XSS fixed (DOMPurify 3.2.6 on all preview HTML, 98d7541; payload test 0 alerts);
+  MDS-B-002..004 a11y (task checkbox labels, dark keyword contrast 5.7:1, view switch role=group + aria-pressed, b309f7a);
+  FEATURES.md restored from the paused stash (a1f5ba4). Walk 48/48 every step; baseline changed only for +24 B HTML/DOCX export.
 - 2026-11-25 kit fix: removed duplicated `docs/master/`, `docs/project/`, `WORKLOG-PROJECT.md` (23 tracked files,
   stale copies of platform/docs); added `docs/PLATFORM-DOCS.md` pointer; CLAUDE.md tracking rule now points to
   platform/docs/WORKLOG.md and keeps PRIVATE-*.md at the workspace root only.
