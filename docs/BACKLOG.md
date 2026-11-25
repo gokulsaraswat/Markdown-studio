@@ -7,7 +7,6 @@ Status: open, doing, blocked, done, dropped. Cross-repo: `needs:` waits on, `blo
 ## Bugs
 | ID | Title | Pri | Status | Needs/Blocks | Notes (where, repro, evidence) |
 |---|---|---|---|---|---|
-| MDS-B-001 | Preview renders raw HTML unsanitized: inline handlers run (XSS from opened/imported files) | P1 | open | | js/app.js `renderMarkdown` -> `dangerouslySetInnerHTML`, no sanitizer; link renderer only HTML-escapes href (`javascript:` passes). Repro: `<img src=x onerror="window.__xss=1">` sets `__xss` (verified headless 2026-11-25). Pages origin gokulsaraswat.github.io is shared by all project sites. Fix in phase B with a vendored sanitizer; keep rendered output identical for safe markdown. |
 | MDS-B-002 | a11y: preview task-list checkboxes have no accessible label | P2 | open | | Lighthouse `label`, `article.preview-sheet > ul > li > input` |
 | MDS-B-003 | a11y: `hljs-keyword` colour fails contrast in preview code | P2 | open | | Lighthouse `color-contrast`, highlight-light/dark.css |
 | MDS-B-004 | a11y: `.view-segment` has `role=tablist` without `tab` children | P2 | open | | Lighthouse `aria-required-children`, header view switch |
@@ -37,7 +36,8 @@ Status: open, doing, blocked, done, dropped. Cross-repo: `needs:` waits on, `blo
 ## Done (recent)
 | ID | Title | Commit | Date |
 |---|---|---|---|
-| MDS-I-004 | docs/FEATURES.md inventory (routes, features, 49 commands, 14 slash items, all shortcuts) + baseline numbers | (this commit) | 2026-11-25 |
+| MDS-B-001 | Preview XSS fixed: DOMPurify 3.2.6 sanitizes all preview HTML (`sanitizePreviewHtml` in postProcessRenderedHtml); payload test: script, onerror, javascript: link, iframe removed, 0 alerts; walk 48/48 fingerprint identical | (this commit) | 2026-11-25 |
+| MDS-I-004 | docs/FEATURES.md inventory (routes, features, 49 commands, 14 slash items, all shortcuts) + baseline numbers | a1f5ba4 | 2026-11-25 |
 | MDS-F-002 | Optional Google/GitHub sign-in (shared contract, app `studio`): js/auth.js, supabase-config.js, styles/auth.css, vendor/supabase.js; walk fingerprint unchanged | 3206216 | 2026-11-25 |
 | MDS-D-002 | Add docs/ARCHITECTURE.md (only what exists) | 660662e | 2026-11-25 |
 | MDS-I-001 | Scripted behaviour walk tests/smoke/walk.mjs + baseline fingerprint (48 steps) | ecaeb40 | 2026-11-25 |

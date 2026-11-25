@@ -41,7 +41,8 @@ previous implementation it captured (`patchNBase<Method>`). The effective behavi
 LAST assignment in the file (e.g. `handleKeyDown` is wrapped by patches 5, 6, 7; `getCommandItems` by 5, 6, 7, 9;
 `handleOpenFile` / `saveToDisk` by 9).
 - Markdown: `marked` with a custom renderer (safe `href`, `target=_blank rel=noopener`), GFM, smartypants;
-  preview HTML is set via `dangerouslySetInnerHTML` without sanitizing (see BACKLOG MDS-B-001).
+  preview HTML passes `sanitizePreviewHtml` (DOMPurify 3.2.6, `vendor/purify.min.js`: forbids style/form, keeps link
+  target and forces rel=noopener; if DOMPurify is missing the HTML is escaped) before `dangerouslySetInnerHTML`.
   Patch 4 adds frontmatter, lite math and lite diagram rendering.
 - Highlighting: `window.hljs.highlightElement` on preview `pre code` blocks.
 - Input: global `keydown` listener on `window` (`handleKeyDown`), editor `onKeyDown` (`handleEditorKeyDown`),

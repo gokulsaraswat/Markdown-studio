@@ -607,7 +607,7 @@
 
   function postProcessRenderedHtml(html) {
     if (typeof DOMParser === 'undefined') {
-      return html;
+      return sanitizePreviewHtml(html);
     }
 
     try {
@@ -635,11 +635,30 @@
           firstParagraph.parentNode.removeChild(firstParagraph);
         }
       }
-      return doc.body.innerHTML;
+      return sanitizePreviewHtml(doc.body.innerHTML);
     } catch (error) {
       console.warn('Unable to post-process rendered markdown.', error);
-      return html;
+      return sanitizePreviewHtml(html);
     }
+  }
+
+  var previewSanitizerReady = false;
+
+  function sanitizePreviewHtml(html) {
+    var purifier = typeof window !== 'undefined' ? window.DOMPurify : null;
+    if (!purifier || typeof purifier.sanitize !== 'function') {
+      return typeof DOMParser === 'undefined' ? html : escapeHtml(html);
+    }
+    if (!previewSanitizerReady) {
+      purifier.addHook('afterSanitizeAttributes', function (node) {
+        if (node.tagName === 'A' && node.getAttribute('target')) {
+          node.setAttribute('target', '_blank');
+          node.setAttribute('rel', 'noopener noreferrer');
+        }
+      });
+      previewSanitizerReady = true;
+    }
+    return purifier.sanitize(html, { ADD_ATTR: ['target'], FORBID_TAGS: ['style', 'form'] });
   }
 
   function getHighlightedHtmlFragment(html) {

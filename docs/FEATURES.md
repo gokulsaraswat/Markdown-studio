@@ -46,7 +46,7 @@ dialogs and answers the word-goal prompt with 500.
 |---|---|
 | Textarea editor left, live preview right (marked GFM: headings, emphasis, code, tables, task lists) | walk:`edit.preview` |
 | Syntax highlighting in preview code blocks (highlight.js) | walk:`edit.preview` (`hljs` true) |
-| Preview links open in a new tab with `rel=noopener noreferrer` (href is HTML-escaped only; see MDS-B-001) | inspect a preview link |
+| Preview links open in a new tab with `rel=noopener noreferrer` ; all preview HTML is sanitized by DOMPurify (no scripts, event handlers, javascript: links, iframes) | inspect a preview link |
 | Frontmatter bar, lite math, lite diagrams (patch 4; toggles in settings) | Templates > frontmatter / math / mermaid snippet renders |
 | Synced scrolling editor/preview + sync meter | scroll editor, preview follows |
 | Draggable divider, double-click resets; split presets editor-first / balanced / review | drag + double-click divider; palette `patch6-split-*` |
@@ -146,4 +146,4 @@ Workspace: `appSetup`, `exportWorkspaceBackup`, `importWorkspaceBackup`, `restor
 | Feature | Verify |
 |---|---|
 | Optional "Continue with Google / GitHub" in the top bar (`js/auth.js`, `js/supabase-config.js`, `styles/auth.css`, `vendor/supabase.js`), loaded after the editor; guests keep every feature and local save | open app signed out: editor works, sign-in button visible; walk 48/48 unchanged |
-| Precache now includes the sign-in files; cache name `markdown-studio-shell-v10` | walk:`offline.reload` |
+| Precache now includes the sign-in files; cache name `markdown-studio-shell-v11` (adds vendor/purify.min.js) | walk:`offline.reload` |

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'markdown-studio-shell-v10';
+const CACHE_NAME = 'markdown-studio-shell-v11';
 const APP_SHELL = [
   './',
   'index.html',
@@ -15,6 +15,7 @@ const APP_SHELL = [
   'vendor/react.production.min.js',
   'vendor/react-dom.production.min.js',
   'vendor/marked.js',
+  'vendor/purify.min.js',
   'vendor/highlight.min.js',
   'vendor/supabase.js',
   'assets/icon.svg',
