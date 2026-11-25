@@ -37,7 +37,8 @@ Status: open, doing, blocked, done, dropped. Cross-repo: `needs:` waits on, `blo
 ## Done (recent)
 | ID | Title | Commit | Date |
 |---|---|---|---|
-| MDS-F-002 | Optional Google/GitHub sign-in (shared contract, app `studio`): js/auth.js, supabase-config.js, styles/auth.css, vendor/supabase.js; walk fingerprint unchanged | (this commit) | 2026-11-25 |
-| MDS-D-002 | Add docs/ARCHITECTURE.md (only what exists) | (this commit) | 2026-11-25 |
+| MDS-I-004 | docs/FEATURES.md inventory (routes, features, 49 commands, 14 slash items, all shortcuts) + baseline numbers | (this commit) | 2026-11-25 |
+| MDS-F-002 | Optional Google/GitHub sign-in (shared contract, app `studio`): js/auth.js, supabase-config.js, styles/auth.css, vendor/supabase.js; walk fingerprint unchanged | 3206216 | 2026-11-25 |
+| MDS-D-002 | Add docs/ARCHITECTURE.md (only what exists) | 660662e | 2026-11-25 |
 | MDS-I-001 | Scripted behaviour walk tests/smoke/walk.mjs + baseline fingerprint (48 steps) | ecaeb40 | 2026-11-25 |
 | MDS-D-001 | Replace duplicated docs/master, docs/project, WORKLOG-PROJECT.md with docs/PLATFORM-DOCS.md; fix CLAUDE.md tracking rule | 82d9c77 | 2026-11-25 |
