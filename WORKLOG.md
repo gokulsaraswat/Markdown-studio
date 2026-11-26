@@ -54,3 +54,5 @@ Next: Phase 1 = Vite + ES modules + React 19 refactor with an identical walk fin
 
 ## Reminders
 - Scope of this repo is not final; see docs/KICKOFF-PROMPT.md "Questions to ask me first".
+
+- 2026-11-26 Upgrade program: status of all 7 repos and how to resume is in platform/docs/UPGRADE-PROGRAM.md (read it first).
